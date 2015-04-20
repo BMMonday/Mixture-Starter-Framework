@@ -1,0 +1,23 @@
+{% block title %}About - Umbraco Boilerplate for Mixture{% endblock %}
+
+{% block precontent %}
+
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Page Header goes here {% endblock %}
+{% block content %}
+    <a href="#test">Smooth Scroll Demo</a>
+    {{ 12 | lorem_ipsum:'p' }}
+    <h2 id="test">Target of smooth scroll</h2>
+    {{ 12 | lorem_ipsum:'p' }}
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+    {% include "sidebar" %}
+{% endblock %}

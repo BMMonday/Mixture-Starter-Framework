@@ -1,0 +1,566 @@
+// ==========================================================
+
+// 320 and Up by Andy Clarke
+// Version: 3.0
+// URL: http://stuffandnonsense.co.uk/projects/320andup/
+// Apache License: v2.0. http://www.apache.org/licenses/LICENSE-2.0
+
+// ==========================================================
+
+/*------------------------------------*\
+    $CONTENTS
+\*------------------------------------*/
+/**
+ * $GLOBAL.............Global and repeated styles (e.g. 'body' and 'hidden')
+ * $HEADER.............Page header styles
+ * $CONTENT............Page Content styles
+ * $SIDEBAR............Sidebar styles
+ * $FOOTER.............Page Footer styles
+ * $MISC...............Miscellaneous styles which don't fit anywhere else
+ * $MODERNIZR..........Styles based on classes added by Modernizr
+ */
+
+
+
+
+
+//------------------------------------ $GLOBAL ------------------------------------
+//Set the body background colour to match the off canvas navigation, will show adjacent to footer when menu is open
+body {
+    //background:@menubg;
+}
+
+.wrapAll {
+	overflow:hidden;
+	position:absolute;
+	width:100%;
+}
+
+.wrapper {
+    width:100%;
+}
+    .wrapper-inner {
+        background:@bodycolor;
+    }
+
+//Used on desktop view for central column layout
+.center {
+
+}
+//Hide an element from the screen, but keep accessible to screen readers
+.hidden {
+    .visuallyhidden()!important;
+}
+
+
+
+
+
+//----------------------------------- $Modules ------------------------------------
+//Cookie Bar
+.cookies(base);
+//Social Links
+.social(base);
+//3-column layout on bigger screens
+.column-block(base);
+//==Rotator
+.rotator(base);
+//==Forms layout
+.forms(base);
+//==Modal
+.modal(base);
+.secondmodal(base);
+//==Google Map
+.map(base);
+
+
+
+
+
+//------------------------------------ $HEADER ------------------------------------
+//Button to scroll to top of page
+.toTop {
+	position:fixed;
+	.opacity(0);
+	cursor:pointer;
+	z-index:98;
+	.font-size(@nbhFont);//Match icon size to off screen menu toggle
+	background:@basecolor;
+	color:@dark;
+	//.box-shadow(0 0 14px rgba(0,0,0,.4));
+	border:1px solid @dark;
+	display:block;
+	//width:1.2em;
+	//line-height:1em;
+	text-align:center;
+	text-decoration:none;
+	padding:.1em;
+	.toTopPos();
+	&.visible {
+		.opacity(1);
+		.toTopPos-visible();
+	}
+	&:hover, &:focus {
+		background:@light;
+		color:@dark;
+		text-decoration:none;
+		outline:0;
+	}
+}
+
+.header {
+    background:@basecolor;
+    padding:0 @padding @pad2;
+    .logo {
+        text-align:center;
+        //padding:1em 0 0;
+        line-height:0;
+        //max-width:250px;
+        width:100%;
+        text-align:center;
+        a {
+            display:inline-block;
+			width:100%;
+            max-width:250px;
+            &:hover {
+                text-decoration:none;
+            }
+        }
+            .svg {
+                position:relative;
+                height: 0;
+                display:block;
+            }
+                svg {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
+                }
+                .img {
+                    display:none;
+                }
+    }
+    .contact {
+        color: @darker;
+        text-align:center;
+        .font-size(20);
+        padding:.3em 0;
+        a {
+            color:@darker;
+        }
+        .phone, .email {
+            display:inline-block;
+            margin:0 @padding;
+        }
+        .phone {
+
+        }
+        .email {
+
+        }
+    }
+    .headerNav {
+        //.visuallyhidden();
+    }
+}
+
+//Styles applied to all DynMenu instances
+.menu {
+	ul {
+		list-style:none;
+        margin:0;
+        padding:0;
+		width: 100%;
+		ul {
+            li {
+                width:100%;
+            }
+        }
+	}
+		li {
+
+		}
+			a {
+                display:block;
+                padding:.2em;
+                position:relative;
+                &:hover {
+                    text-decoration:none;
+                }
+            }
+				.left, .right {
+                    display:none;
+                }
+	.current, .parent {
+        color:@menu-current;
+    }
+	.menuIcons(base);
+}
+
+
+
+
+
+//------------------------------------ $CONTENT ------------------------------------
+.content {
+	/*p a {
+		text-decoration:underline;
+	}*/
+}
+	.main-wrap {
+		padding:0 @padding;
+        margin:0 0 @pad2;
+	}
+		.section {
+			//Page Title
+			header {
+
+			}
+			footer {
+
+			}
+		}
+			.main {
+
+			}
+
+//==Contact Page
+.contactDetails when (@forms) {
+    position:relative;
+    padding:1em 0 0;
+	margin:1em 0 0;
+    .seperator-h(@sep-color; 2px);
+}
+.em when (@forms) {
+    color:@dark;
+    width:50px;
+    display:inline-block;
+}
+
+
+
+
+
+//------------------------------------ $SIDEBAR ------------------------------------
+.sidebar {
+    padding:0 @padding;
+}
+
+
+
+
+
+//------------------------------------ $FOOTER ------------------------------------
+.footer {
+    clear:both;
+    background:@light;
+    position:relative;
+    z-index:2;
+    width:100%;
+    .center {
+        padding:@padding;
+    }
+}
+    .footerNav {
+        .level1 {
+            //Split into columns of 120px wide, with or without a rule
+            //.columns(120px; 7; @pad4; @lighter; solid; 1px);
+            //.columns-noC(120px; @pad4; @lighter; solid; 1px);
+            .columns-noCorR(120px; @pad4);
+        }
+            .column {
+                margin-left:@pad2;
+                margin-right:@pad2;
+                &.first {
+                    margin-left:0;
+                }
+                &.last {
+                    margin-right:0;
+                }
+            }
+        ul {
+			//padding:0;
+			//margin:0;
+            ul {
+                margin-left:1em;
+            }
+            //Lighten each sub-level
+            // ul {
+            //     a {
+            //         color:lighten(@menuColour, 14%);
+            //     }
+            //     ul {
+            //         a {
+            //             color:lighten(@menuColour, 28%);
+            //         }
+            //         ul {
+            //             a {
+            //                 color:lighten(@menuColour, 36%);
+            //             }
+            //         }
+            //     }
+            // }
+        }
+            li {
+                .font-size(14);
+                &:hover, &.emhover {
+                    > a {
+                        & when (iscolor(@menuFN-color-hover)) {
+                            color:@menuFN-color-hover;
+                        }
+                        & when (iscolor(@menuFN-bg-hover)) {
+                            background:@menuFN-bg-hover;
+                        }
+                    }
+                }
+            }
+                a {
+                    & when (iscolor(@menuFN-color)) {
+                        color:@menuFN-color;
+                    }
+                    line-height:1.1;
+                    display:inline-block;
+                    position:static;
+                    padding:0;
+                }
+                    .left, .right {
+                        display:none;
+                    }
+
+		.menuIcons(hide);
+    }
+    //Miscellaneous footer text
+    .ftr-btm {
+        color:@dark;
+        .font-size(12);
+        .copyright {
+            float:left;
+        }
+    }
+        .sdb {
+            float:right;
+        }
+
+
+
+
+
+//------------------------------------ $MISC ------------------------------------
+//==Hover transitions
+//Color
+a {
+    transition:color @trans;
+}
+//Background
+.menuToggle {
+	transition:background @trans;
+}
+//Color & background
+.offCanvasMenus .right, .offCanvasMenus .upalevel i, .btn {
+	transition: background @trans, color @trans;
+}
+
+
+.btn {
+    text-align:center;
+	text-decoration:none!important;
+    line-height:1.3;
+    padding:.64em .4em;
+    .rounded(.4em);
+	background:@dark;
+    color:@white!important;
+    .font-size(12);
+    display:inline-block;
+    cursor:pointer;
+    border:0;
+    margin:0;
+    position:relative;
+    -webkit-appearance: none;
+    //transition:all @trans;
+    &:hover, &:focus, &.focus {
+        //background:@basecolor;
+		background:saturate(@dark, 40);
+        text-decoration:none!important;
+        //color:@dark!important;
+    }
+	&:active {
+		background:desaturate(@dark, 30);
+	}
+    i {
+        line-height:1;
+        font-size:1.4em;
+        position:absolute;
+        z-index:1;
+        margin-right:0;
+		width:1em;
+        top:50%;
+        margin-top:-0.5em;
+    }
+    &.icon-left {
+        padding-left:2.4em;
+        i {
+            left:.4em;
+        }
+    }
+	&.icon-right {
+        padding-right:2.4em;
+		i {
+			//margin:0 0 0 .4em;
+			//float:right;
+            right:.4em;
+		}
+	}
+    &.icon-only {
+        i {
+            position:static;
+        }
+        .btn {
+            padding:0;
+            position:absolute;
+            width:100%;
+            height:100%;
+            left:0;
+            top:0;
+        }
+    }
+}
+    .btn-red {
+        background:@alertcolor;
+        &:hover, &:focus, &.focus {
+            background:saturate(@alertcolor, 30);
+        }
+        &:active {
+            background:desaturate(@alertcolor, 30);
+        }
+    }
+    .btn-green {
+        background: @successcolor;
+        &:hover, &:focus, &.focus {
+            background:saturate(@successcolor, 30);
+        }
+        &:active {
+            background:desaturate(@successcolor, 30);
+        }
+    }
+.btn-wrap {
+    .btn {
+        background:transparent;
+        border:0;
+        z-index:2;
+		font-size:1em;
+        width:100%;
+    }
+    &.icon-left {
+        padding:0;
+        .btn {
+            padding-left:2.4em;
+        }
+    }
+    &.icon-right {
+        padding:0;
+        .btn {
+            padding-right:2.4em;
+        }
+    }
+}
+//Fixed widths, based on font-size
+.btn-small when (@btns-fixed) {
+    width: 6em;
+}
+.btn-mid when (@btns-fixed) {
+    width:10em;
+}
+.btn-wide when (@btns-fixed) {
+    width:20em;
+}
+//Allow multiline text on button inputs
+input.btn {
+    white-space:normal;
+}
+
+.clearfix {
+    .clearfix();
+}
+//Uncomment the following if not using the full _tables.less styles
+/*table {
+    border:1px solid @darker;
+    border-collapse: collapse;
+    border-spacing: 0;
+    tr {
+
+    }
+        td {
+            border:1px solid @darker;
+            padding:@pad;
+        }
+}*/
+//Style form inputs
+input[type="text"],input[type="search"],input[type="email"], input[type="password"], input[type="number"],input[type="url"],input[type="tel"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"], input[type="color"], textarea, select {
+    color:@dark;
+    font-family:@altfont;
+}
+input {
+    &::placeholder {
+        color: @lightgrey;
+    }
+}
+//Style of the placeholder backup for old browsers
+.placeholder {
+    color:@lightgrey;
+    font-family:@altfont;
+}
+
+
+
+
+
+//------------------------------------ $MODERNIZR ------------------------------------
+.js {
+
+}
+//Changes for when javascript is disabled
+.no-js {
+    .menu {
+		.right {
+			display:none;
+		}
+	}
+    .sideNav {
+        ul {
+			ul {
+				margin-left:1em;
+			}
+        }
+
+        .current, .parent {
+
+        }
+    }
+}
+//Changes for touch screens
+.touch {
+
+}
+//Changes for browsers not supporting css animations
+.no-cssanimations {
+    //Replace the spinning loading font-icon with an animated gif
+    .icon-spin {
+        &:before {
+            display:none;
+        }
+        width:16px;
+        height:16px;
+        background:url(images/loading.gif) no-repeat 50% 50%;
+    }
+}
+.no-svg {
+    .header {
+        .logo {
+            a {
+                background-image:url(images/logo.png);
+            }
+        }
+    }
+}

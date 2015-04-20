@@ -1,0 +1,37 @@
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: '@{font-name}';
+  font-style: normal;
+  font-weight: normal;
+/* fix buttons height */
+  line-height: 1em;
+/* you can be more comfortable with increased icons size */
+/* font-size: 120%; */
+}
+
+.ie7icon(@inner) {
+  *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '@{inner}')";
+}
+
+.icon-popup { .ie7icon('&#xe601;'); }
+.icon-grid { .ie7icon('&#xe602;'); }
+.icon-close { .ie7icon('&#xf00d;'); }
+.icon-home { .ie7icon('&#xf015;'); }
+.icon-images { .ie7icon('&#xf03e;'); }
+.icon-map-marker { .ie7icon('&#xf041;'); }
+.icon-twitter { .ie7icon('&#xf099;'); }
+.icon-facebook { .ie7icon('&#xf09a;'); }
+.icon-rss { .ie7icon('&#xf09e;'); }
+.icon-square { .ie7icon('&#xf0c8;'); }
+.icon-columns { .ie7icon('&#xf0db;'); }
+.icon-envelope { .ie7icon('&#xf0e0;f0e0'); }
+.icon-linkedin { .ie7icon('&#xf0e1;'); }
+.icon-puzzle { .ie7icon('&#xf12e;'); }
+.icon-ellipsis { .ie7icon('&#xf141;'); }
+.icon-youtube { .ie7icon('&#xf167;'); }
+.icon-pinterest { .ie7icon('&#xf231;'); }
+
+.icon-arrow-left { .ie7icon('&#xf053;'); }
+.icon-arrow-right { .ie7icon('&#xf054;'); }
+.icon-arrow-up { .ie7icon('&#xf077;'); }
+.icon-arrow-down { .ie7icon('&#xf078;'); }

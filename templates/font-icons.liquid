@@ -1,0 +1,93 @@
+{% block title %}About - Umbraco Boilerplate for Mixture{% endblock %}
+
+{% block styles %}
+	<style media="screen" type="text/css">
+		.im-stack {
+
+		}
+		.im-stack:hover .im-stack-2x {
+			color:#444;
+		}
+		.im-stack:hover .im-stack-1x {
+			color: #00F;
+		}
+			.im-stack-2x {
+				color:#aaa;
+			}
+			.im-stack-1x {
+				color: #3B5998;
+			}
+	</style>
+{% endblock %}
+
+{% block precontent %}
+
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Font Icons Being Used{% endblock %}
+{% block content %}
+	<h2>The icn-font is generated using <a href="http://icomoon.io/app" target="_blank">http://icomoon.io/app</a></h2>
+    <p style="font-size:24px">
+		<i class="im icn-home" aria-hidden="true" title="icn-home"></i>
+			&nbsp;<span style="font-size:16px">"icn-home"</span><br />
+		<i class="im icn-puzzle" aria-hidden="true" title="icn-puzzle"></i>
+			&nbsp;<span style="font-size:16px">"icn-puzzle"</span><br />
+		<i class="im icn-map-marker" aria-hidden="true" title="icn-map-marker"></i>
+			&nbsp;<span style="font-size:16px">"icn-map-marker"</span><br />
+		<i class="im icn-popup" aria-hidden="true" title="icn-popup"></i>
+			&nbsp;<span style="font-size:16px">"icn-popup"</span><br />
+		<i class="im icn-images" aria-hidden="true" title="icn-images"></i>
+			&nbsp;<span style="font-size:16px">"icn-images"</span><br />
+		<i class="im icn-columns" aria-hidden="true" title="icn-columns"></i>
+			&nbsp;<span style="font-size:16px">"icn-columns"</span><br />
+		<br />
+
+        <i class="im icn-youtube" aria-hidden="true" title="icn-youtube"></i>
+			&nbsp;<span style="font-size:16px">"icn-youtube"</span><br />
+        <i class="im icn-twitter" aria-hidden="true" title="icn-twitter"></i>
+			&nbsp;<span style="font-size:16px">"icn-twitter"</span><br />
+        <i class="im icn-facebook" aria-hidden="true" title="icn-facebook"></i>
+			&nbsp;<span style="font-size:16px">"icn-facebook"</span><br />
+        <i class="im icn-pinterest" aria-hidden="true" title="icn-pinterest"></i>
+			&nbsp;<span style="font-size:16px">"icn-pinterest"</span><br />
+        <i class="im icn-linkedin" aria-hidden="true" title="icn-linkedin"></i>
+			&nbsp;<span style="font-size:16px">"icn-linkedin"</span><br />
+        <i class="im icn-rss" aria-hidden="true" title="icn-rss"></i>
+			&nbsp;<span style="font-size:16px">"icn-rss"</span><br /><br />
+
+        <i class="im icn-arrow-left" aria-hidden="true" title="icn-arrow-left"></i>
+        <i class="im icn-arrow-right" aria-hidden="true" title="icn-arrow-right"></i>
+        <i class="im icn-arrow-up" aria-hidden="true" title="icn-arrow-up"></i>
+        <i class="im icn-arrow-down" aria-hidden="true" title="icn-arrow-down"></i> <span style="font-size:16px">"arrow"</span><br />
+
+        <i class="im icn-menu" aria-hidden="true" title="icn-menu"></i>
+			&nbsp;<span style="font-size:16px">"icn-menu"</span><br />
+        <i class="im icn-loading spin-icon" aria-hidden="true" title="icn-loading spin-icon"></i>
+			&nbsp;<span style="font-size:16px">"icn-loading", adding the "spin-icon" class will make it rotate.</span><br />
+        <i class="im icn-envelope" aria-hidden="true" title="icn-envelope"></i>
+			&nbsp;<span style="font-size:16px">"icn-envelope"</span><br />
+        <i class="im icn-close" aria-hidden="true" title="icn-close"></i>
+			&nbsp;<span style="font-size:16px">"icn-close"</span><br />
+		<i class="im icn-ellipsis" aria-hidden="true" title="icn-ellipsis"></i>
+			&nbsp;<span style="font-size:16px">"icn-ellipsis"</span><br />
+		<i class="im icn-square" aria-hidden="true" title="icn-square-o"></i>
+			&nbsp;<span style="font-size:16px">"icn-square-o"</span>
+
+		<h2>Stacked Icons</h2>
+		<p>By using the im-stack class, once icon can be placed atop another, essentially creating a 2-tone icon</p>
+		<span class="im-stack">
+			<i class="im im-stack-2x icn-square"></i>
+			<i class="im im-stack-1x icn-facebook"></i>
+		</span>
+    </p>
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+    {% include "sidebar" %}
+{% endblock %}

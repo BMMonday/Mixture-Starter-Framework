@@ -1,0 +1,48 @@
+{% block title %}Modal Plugin{% endblock %}
+
+{% block precontent %}
+
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Modal Plugin{% endblock %}
+{% block content %}
+    {% if global.modal %}
+		{% case global.modal-type %}
+		{% when 'nivo' %}
+			<h2>Nivo Lightbox <a href="http://dev7studios.com/plugins/nivo-lightbox/" target="_blank">http://dev7studios.com/plugins/nivo-lightbox/</a></h2>
+		{% when 'swipebox' %}
+			<h2>Swipebox <a href="http://brutaldesign.github.io/swipebox/" target="_blank">http://brutaldesign.github.io/swipebox</a></h2>
+		{% when 'featherlight' %}
+			<h2>Featherlight <a href="http://noelboss.github.io/featherlight/" target="_blank">http://noelboss.github.io/featherlight</a></h2>
+        {% when 'popeasy' %}
+            <h2>Popeasy <a href="http://thomasgrauer.com/popeasy/" target="_blank">http://thomasgrauer.com/popeasy/</a></h2>
+		{% endcase %}
+
+        {% if global.modal2 %}
+            {% case global.modal2-type %}
+            {% when 'nivo' %}
+                <h2>and Nivo Lightbox <a href="http://dev7studios.com/plugins/nivo-lightbox/" target="_blank">http://dev7studios.com/plugins/nivo-lightbox/</a></h2>
+            {% when 'swipebox' %}
+                <h2>and Swipebox <a href="http://brutaldesign.github.io/swipebox/" target="_blank">http://brutaldesign.github.io/swipebox</a></h2>
+            {% when 'featherlight' %}
+                <h2>and Featherlight <a href="http://noelboss.github.io/featherlight/" target="_blank">http://noelboss.github.io/featherlight</a></h2>
+            {% when 'popeasy' %}
+                <h2>and Popeasy <a href="http://thomasgrauer.com/popeasy/" target="_blank">http://thomasgrauer.com/popeasy/</a></h2>
+            {% endcase %}
+        {% endif %}
+        <!-- Include modal -->
+        {% include "modal" %}
+	{% else %}
+		<p>Modal plugin disabled in '/models/_global.json'</p>
+    {% endif %}
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+	{% include "sidebar" %}
+{% endblock %}

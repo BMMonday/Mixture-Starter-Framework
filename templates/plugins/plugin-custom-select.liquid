@@ -1,0 +1,26 @@
+{% block title %}icn-font Picker{% endblock %}
+
+{% block styles %}
+    {{ "customSelect.css" | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block precontent %}
+    
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}icn-font Picker{% endblock %}
+{% block content %}
+	<h2>Makes select list into an image selector, Adapted to work as an icn-font selector <a href="https://github.com/rvera/image-picker" target="_blank">https://github.com/rvera/image-picker</a></h2>
+	<!-- Include rotator -->
+	{% include "custom-select" %}
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+	{% include "sidebar" %}
+{% endblock %}

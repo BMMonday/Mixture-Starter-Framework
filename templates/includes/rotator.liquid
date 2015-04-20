@@ -1,0 +1,164 @@
+<div class="rotator">
+	{% case global.rotator-type %}
+	{% when 'flexslider' %}
+		<div class="flexslider flexrotator">
+			<ul class="slides clearfix">
+				<li>
+					{{ "980x300" | placeholder:'ccc' | image_tag:'Placeholder' }}
+					<span class="caption">{{ 1 | lorem_ipsum:'span' }}</span>
+				</li>
+				<li>
+					{{ "980x300" | placeholder:'acacac' | image_tag:'Placeholder' }}
+					<span class="caption">{{ 1 | lorem_ipsum:'span' }}</span>
+				</li>
+				<li>
+					{{ "980x300" | placeholder:'898989' | image_tag:'Placeholder' }}
+					<span class="caption">{{ 1 | lorem_ipsum:'span' }}</span>
+				</li>
+				<li>
+					{{ "980x300" | placeholder:'636363' | image_tag:'Placeholder' }}
+					<span class="caption">{{ 1 | lorem_ipsum:'span' }}</span>
+				</li>
+			</ul>
+		</div>
+		{% if global.carousel and rotator == "true" %}
+			<br />
+			<h2>Flexslider can also be used as a carousel</h2>
+			<div class="flexslider carousel">
+				<ul class="slides clearfix">
+					<li>
+						{{ "210x150" | placeholder:'ccc' | image_tag:'Placeholder' }}
+						<span class="caption">Lorem Ipsum</span>
+					</li>
+					<li>
+						{{ "210x150" | placeholder:'acacac' | image_tag:'Placeholder' }}
+						<span class="caption">Dolor sit</span>
+					</li>
+					<li>
+						{{ "210x150" | placeholder:'898989' | image_tag:'Placeholder' }}
+						<span class="caption">Amet</span>
+					</li>
+					<li>
+						{{ "210x150" | placeholder:'636363' | image_tag:'Placeholder' }}
+						<span class="caption">aliquam erat</span>
+					</li>
+					<li>
+						{{ "210x150" | placeholder:'F00' | image_tag:'Placeholder' }}
+						<span class="caption">commodo</span>
+					</li>
+					<li>
+						{{ "210x150" | placeholder:'0F0' | image_tag:'Placeholder' }}
+						<span class="caption">consequat</span>
+					</li>
+					<li>
+						{{ "210x150" | placeholder:'00F' | image_tag:'Placeholder' }}
+						<span class="caption">Claritas est etiam</span>
+					</li>
+				</ul>
+			</div>
+		{% endif %}
+	{% when 'glidejs' %}
+		<div class="glideslider">
+			<ul class="slides">
+				<li>
+					{{ "980x300" | placeholder:'ccc' | image_tag:'Placeholder' }}
+					<span class="caption">{{ 1 | lorem_ipsum:'span' }}</span>
+				</li>
+				<li>
+					{{ "980x300" | placeholder:'acacac' | image_tag:'Placeholder' }}
+					<span class="caption">{{ 1 | lorem_ipsum:'span' }}</span>
+				</li>
+				<li>
+					{{ "980x300" | placeholder:'898989' | image_tag:'Placeholder' }}
+					<span class="caption">{{ 1 | lorem_ipsum:'span' }}</span>
+				</li>
+				<li>
+					{{ "980x300" | placeholder:'636363' | image_tag:'Placeholder' }}
+					<span class="caption">{{ 1 | lorem_ipsum:'span' }}</span>
+				</li>
+			</ul>
+		</div>
+	{% when 'nivo' %}
+		<div class="nivoSlider-wrapper">
+			<div id="slider" class="nivoSlider slides">
+				<img src="/images/980x300-ccc.jpg" title="#slide1caption" />
+				<a href="#"><img src="/images/980x300-acacac.jpg" title="#slide2caption" /></a>
+				<img src="/images/980x300-898989.jpg" title="#slide3caption" />
+			</div>
+			<div id="slide1caption" class="nivo-html-caption">
+				<strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+			</div>
+			<div id="slide2caption" class="nivo-html-caption">
+				<h1>Slide 2 caption</h1>
+			</div>
+			<div id="slide3caption" class="nivo-html-caption">
+				{{ 1 | lorem_ipsum:'p' }}
+			</div>
+		</div>
+	{% endcase %}
+</div>
+
+{% case global.rotator-type %}
+{% when 'flexslider' %}
+	{{ "jquery.flexslider.min.js" | asset_url | script_tag }}
+	<script type="text/javascript">
+		//$(document).ready(function(){
+		$(window).load(function() {
+			$('.flexrotator').flexslider({
+				animation: "{{ global.rotator-anim }}",
+				slideshowSpeed: {{ global.rotator-speed }},
+				animationSpeed: {{ global.animationSpeed }},
+				directionNav: {{ global.rotator-arrows }},
+				controlNav: {{ global.rotator-bullets }},
+				prevText: 'Previous<i class="im icn-arrow-left" aria-hidden="true"></i>',
+				nextText: 'Next<i class="im icn-arrow-right" aria-hidden="true"></i>'
+			});
+			{% if (global.carousel) %}
+				$('.carousel').flexslider({
+					animation: "slide",
+					slideshowSpeed: {{ global.carousel-speed }},
+					animationSpeed: {{ global.animationSpeed }},
+					directionNav: {{ global.carousel-arrows }},
+					controlNav: {{ global.carousel-bullets }},
+					prevText: 'Previous<i class="im icn-arrow-left" aria-hidden="true"></i>',
+					nextText: 'Next<i class="im icn-arrow-right" aria-hidden="true"></i>',
+					animationLoop: false,
+					itemWidth: 210,
+					itemMargin: 5,
+				});
+			{% endif %}
+		});
+	</script>
+{% when 'glidejs' %}
+	{{ "jquery.glide.min.js" | asset_url | script_tag }}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.glideslider').glide({
+				autoplay: {{ global.rotator-speed }},
+				animationTime: {{ global.animationSpeed }},
+				arrows: {{ global.rotator-arrows }},
+				nav: {{ global.rotator-bullets }},
+				arrowLeftText: '<i class="im icn-arrow-left" aria-hidden="true"></i>',
+				arrowRightText: '<i class="im icn-arrow-right" aria-hidden="true"></i>'
+			});
+		});
+	</script>
+{% when 'nivo' %}
+	{{ "jquery.nivo.slider.js" | asset_url | script_tag }}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#slider').nivoSlider({
+				effect: '{{ global.rotator-anim }}',
+				animSpeed: {{ global.animationSpeed }},
+					{% if global.nivo-slices != "" %}slices: {{ global.nivo-slices }},{% endif %}
+					{% if global.nivo-boxCols != "" %}boxCols: {{ global.nivo-boxCols }},{% endif %}
+					{% if global.nivo-boxRows != "" %}boxRows: {{ global.nivo-boxRows }},{% endif %}
+				pauseTime: {{ global.rotator-speed }},
+				directionNav: {{ global.rotator-arrows }},
+				controlNav: {{ global.rotator-bullets }},
+				prevText: 'Previous<i class="im icn-arrow-left" aria-hidden="true"></i>',
+				nextText: 'Next<i class="im icn-arrow-right" aria-hidden="true"></i>',
+			});
+		});
+	</script>
+{% endcase %}

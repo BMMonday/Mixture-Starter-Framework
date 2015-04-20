@@ -1,0 +1,482 @@
+//Setup the transitions for the offscreen menus
+.wrapper, .offCanvasMenu {
+	.transition(transform @trans ease-in-out);
+}
+.wrapper {
+	z-index:5;
+	.menuClosed(content);
+}
+
+.wrapper-inner, .offCanvas-left, .offCanvas-right {
+	//.translate3d(0,0,0); // Fix for transition bubbling down in some android browsers
+}
+
+.disableTranslate {
+	transform : translate(0, 0)!important;
+	transition: none !important;
+}
+
+//Class added to body when the left off canvas navigation is opened
+.leftMenu {
+    //Move the wrapper and footer by the width of the menu
+    .wrapper {
+		.menuOpen(content-left);
+	}
+	.offCanvasHolder {
+		.menuOpen(offCanvasHolder);
+		.offCanvas-left {
+			.menuOpen(offCanvas-left);
+		}
+	}
+		.offCanvasMenus {
+
+		}
+			.offCanvas-left {
+				//z-index:2;
+			}
+
+		.offCanvasToggles .leftToggle {
+			background:@menuToggleActive;
+		}
+	&.originalOpen {
+		.offCanvas-left {
+			//z-index:2;
+			.menuOpen(offCanvas-left-original);
+		}
+	}
+}
+//Class added to body when the right off canvas navigation is opened
+.rightMenu {
+    .wrapper {
+		.menuOpen(content-right);
+	}
+	.offCanvasHolder {
+		.menuOpen(offCanvasHolder);
+		.offCanvas-right {
+			.menuOpen(offCanvas-right);
+		}
+	}
+		.offCanvasMenus {
+
+		}
+			.offCanvas-right {
+				//z-index:2;
+			}
+		.offCanvasToggles .rightToggle {
+			background:@menuToggleActive;
+		}
+	&.originalOpen {
+		.offCanvas-right {
+			//z-index:2;
+			.menuOpen(offCanvas-right-original);
+		}
+	}
+}
+.centerMenu {
+	.wrapper, .footer {
+
+	}
+	.offCanvasHolder {
+
+	}
+		.offCanvasMenus {
+			.offCanvas-center {
+				.centerMenuOpen(offCanvas-center)
+			}
+		}
+		.offCanvasToggles .centerToggle {
+			background:@menuToggleActive;
+		}
+    .offCanvasOriginal {
+		margin-bottom:(@nbhFont * -1.4px);
+		.centerMenuOpen(offCanvas-center);
+	}
+}
+.menuOpen {
+	.menu-overlay {
+		width:100%;
+		height:100%;
+		.opacity(.6);
+		transition:opacity @trans;
+	}
+	.offCanvasToggles {
+		.open {
+			.icon {
+				span {
+					background-color: transparent;
+					&:before, &:after {
+						top: 0;
+					}
+					&:before {
+						transform: rotate(45deg);
+					}
+					&:after {
+						transform: translateY(-10px) rotate(-45deg);
+						top: 10px;
+					}
+				}
+			}
+		}
+	}
+	.subActive(offCanvas);
+}
+.clonedOpen {
+	.MainForm {
+		z-index:3;
+	}
+}
+
+//Wrapper element for the off canvas menus
+.offCanvasHolder {
+	.menuClosed(offCanvasHolder);
+}
+	//Off canvas menu toggles at the top of the page
+	.offCanvasToggles {
+		width: 100%;
+		background:@menuToggleBase;
+		position:relative;
+		z-index:1001;
+		display: flex;
+		//flex-direction: row;
+		//flex-wrap: nowrap;
+		justify-content: space-between;
+		//align-content: center;
+		//align-items: stretch;
+		a {
+			color:@menuToggleText;
+			max-width:50%;
+			display:block;
+			position:relative;
+			.font-size(@nbhFont);
+			cursor:pointer;
+			height:1.4em;
+			//-webkit-box-ordinal-group: 1;
+			//-moz-box-ordinal-group: 1;
+			//order: 0;
+			//flex: 0 1 auto;
+			//align-self: auto;
+			&.leftToggle, &.centerToggle {
+				align-self: flex-start;
+				.icon {
+					left:.2em;
+				}
+				.text {
+					padding-left:1.4em;
+				}
+			}
+			&.rightToggle {
+				align-self: flex-end;
+				//i {
+				.icon {
+					right:.2em;
+				}
+				.text {
+					padding-right:1.4em;
+					text-align:right;
+				}
+			}
+			&.icon-only {
+				padding:0 .2em;
+				.icon {
+					position:relative;
+					left:auto;
+				}
+			}
+			&:hover {
+				background:@menuToggleActive;//darken(@basecolor, 8);
+				//text-shadow:3px 3px 6px @dark-trans;
+				text-decoration:none;
+			}
+		}
+			//Icon
+			/*i {
+				padding:.2em;
+				position:absolute;
+				display:block;
+				&:before {
+
+				}
+			}*/
+			.icon {
+				position:absolute;
+				display:block;
+				width:1em;
+				top:.2em;
+			}
+			.burgercross {
+				top:50%;
+				margin-top:-3px;
+				span, span:before, span:after {
+					cursor: pointer;
+					border-radius: 1px;
+					height: 6px;
+					width: 100%;
+					background: @menuToggleText;
+					position: absolute;
+					display: block;
+					content: '';
+					transition: all 500ms ease-in-out;
+				}
+				span:before {
+					top: -11px;
+				}
+				span:after {
+					bottom: -11px;
+				}
+			}
+			.text {
+				padding:.2em;
+				display:table;
+				line-height:1;
+				height:100%;
+				width:100%;
+				//Using display table-cell to vertically center the text
+				.inner {
+					font-size:.48em;
+					display:table-cell;
+					vertical-align:middle;
+				}
+			}
+	}
+
+	.offCanvasMenus {
+
+	}
+		//Cloned copy of the header navigation (will not affect the desktop view)
+		.offCanvasMenu {
+			position:absolute;
+			//Styles for both off canvas menus
+			.offcanvas {
+				height:100%;
+				//overflow:hidden;
+				//position:absolute;
+				//width:100%;
+				.menu {
+					height:100%;
+					.level1 {
+						position:relative;
+					}
+					//Set z-indexes so that each level appears above the previous
+					.level2 {
+						z-index:2;
+					}
+					.level3 {
+						z-index:3;
+					}
+					.level4 {
+						z-index:4;
+					}
+					.level5 {
+						z-index:5;
+					}
+					ul {
+						.font-size(20);
+						height:100%;
+						background:@menuOC-bg;
+						ul {
+							position:absolute;
+							top:0;
+							.translate3d(100%,0,0);
+
+							.subClosed(ulul);
+						}
+						//Transition position and opacity when 'active' class added to each level
+						.active {
+							.subActive(ulul);
+						}
+					}
+						li {
+							clear:left;
+							border-bottom:1px solid (mix(@menuOC-color, @menuOC-bg, 50%));
+						}
+							a {
+								color:@menuOC-color;
+								&:hover {
+									background:@menuOC-bg-hover;
+								}
+							}
+						//Menu items which have child items
+						.hasChildren {
+							> a {
+								//Add padding to prevent text from overlapping arrow
+								padding-right:2.2em;
+							}
+						}
+						.showChildren > i, .upalevel i:before {
+							height:1em;
+							width:1em;
+							display:inline-block;
+							position:absolute;
+							top:50%;
+							left:50%;
+							margin:-.5em 0 0 -.5em;
+							line-height:1em;
+						}
+						//Arrow to open the next level
+						.showChildren {
+							display:block;
+							right:0;
+							top:0;
+						}
+						.showChildren, .upalevel i {
+							position:absolute;
+							height:100%;
+							width:2em;
+							line-height:2em;
+							background:@menuOC-arrow-bg;
+							color:@menuOC-arrow-color;
+							text-align:center;
+							&:hover {
+								background:@menuOC-arrow-bg-hover;
+							}
+						}
+							//The menu title and back button
+							.upalevel {
+								display:block;
+								background:darken(@menuOC-bg, 8);
+								color:@menuOC-color;
+								position:relative;
+								display:table;
+								min-height:2em;
+								//The title of the parent item
+								.childrenof {
+									padding:.2em 0 .2em 2.2em;
+									//display:inline-block;
+									//min-height:2em;
+									display:table-cell;
+									vertical-align:middle;
+									line-height:1.2;
+								}
+								//Back button
+								i {
+									display:inline-block;
+									font-style:normal;
+									cursor:pointer;
+								}
+							}
+
+						li.title {
+							padding:.2em;
+							background:darken(@menuOC-bg, 12);
+						}
+					.current, .parent {
+						& when (iscolor(@menuOC-color-current)) {
+							color: @menuOC-color-current;
+						}
+						& when (iscolor(@menuOC-bg-current)) {
+							background: @menuOC-bg-current;
+						}
+					}
+				}
+			}
+		}
+		.offCanvas-left, .offCanvas-right {
+			//height:100%;
+			width: @menuWidth;
+			position:absolute;
+			top:(@nbhFont * 1.4px);
+			bottom:0;
+			.subClosed(offCanvas);
+			//&.offCanvasOriginal {
+			//	top:(@nbhFont * 1.4px);
+			//}
+		}
+		.offCanvas-left {
+			//left: @negMenuWidth;
+			.menuClosed(offCanvas-left);
+		}
+		//Cloned copy of the sidebar navigation (will not affect the desktop view)
+		.offCanvas-right {
+			//right: @negMenuWidth;
+			.menuClosed(offCanvas-right);
+		}
+		.offCanvas-center {
+			.centerMenuClosed(offCanvas-center);
+			&.offCanvasOriginal {
+				z-index:1000;
+			}
+			&.clone {
+				margin-bottom:(@nbhFont * -1.4px);
+			}
+		}
+		.offCanvasOriginal {
+			.offcanvas {
+				//position:static;
+			}
+			&.offCanvas-left {
+				//.menuClosed(offCanvas-left-original);
+			}
+			&.offCanvas-right {
+				//.menuClosed(offCanvas-right-original);
+			}
+		}
+
+	.hideMenu {
+		.visuallyhidden();
+	}
+
+
+
+
+
+//------------------------------------ $HEADER ------------------------------------
+.menu-overlay {
+	position:absolute;
+	width:0;
+	height:0;
+	top:0;
+	left:0;
+	background:@white;
+	.opacity(0);
+	z-index:999;
+	transition: height 0s @trans, width 0s @trans, opacity @trans;
+}
+
+
+
+
+//------------------------------------ $MODERNIZR ------------------------------------
+.no-js {
+	.menu {
+		ul {
+			ul {
+				margin-left:1.5em;
+			}
+		}
+			a {
+				display:inline-block;
+			}
+	}
+}
+
+.no-csstransitions {
+	.offCanvas-left {
+		left:@negMenuWidth;
+		visibility:visible;
+	}
+	.offCanvas-right {
+		right:@negMenuWidth;
+		visibility:visible;
+	}
+}
+
+.no-csstransforms3d {
+	//Use left to position off canvas sub-level menus behind content, to be animated by jQuery
+	.offCanvasMenu {
+		ul ul {
+			left:100%;
+		}
+	}
+}
+
+.no-flexbox {
+	.offCanvasToggles {
+		overflow:hidden;
+		.leftToggle, .centerToggle {
+			float:left;
+		}
+		.rightToggle {
+			float:right;
+		}
+	}
+}

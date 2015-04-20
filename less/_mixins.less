@@ -1,0 +1,469 @@
+// ==========================================================
+
+// 320 and Up by Andy Clarke
+// Version: 3.0
+// URL: http://stuffandnonsense.co.uk/projects/320andup/
+// Apache License: v2.0. http://www.apache.org/licenses/LICENSE-2.0
+
+// ==========================================================
+
+/* Mixins =================================================== */
+
+// ROOT 					==============================
+.viewport(@width: device-width) {
+    @-ms-viewport{
+        width: @width;
+    }
+    @-o-viewport{
+        width: @width;
+    }
+    @-webkit-viewport{
+        width: @width;
+    }
+    @-moz-viewport{
+        width: @width;
+    }
+    @viewport{
+       width: @width;
+    }
+}
+
+// TYPOGRAPHY 			==============================
+
+.font-size(@font-size: 16){
+    @rem: (@font-size / 10);
+    font-size : @font-size * 1px;
+    font-size : ~"@{rem}rem";
+}
+
+.text-overflow() {
+    overflow : hidden;
+    text-overflow : ellipsis;
+    white-space : nowrap;
+}
+
+// TEXTURE 				==============================
+
+// gradients
+.horizontal(@startColor : @white; @endColor : @lightergrey) {
+    background-color: @endColor;
+    //background-image  : -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor));
+    //background-image  : -webkit-linear-gradient(left, @startColor, @endColor);
+    //background-image  : -ms-linear-gradient(left, @startColor, @endColor);
+    //background-image  : linear-gradient(left, @startColor, @endColor);
+    background-image  : linear-gradient(to right, @startColor 0%, @endColor 100%);
+    background-repeat : repeat-x;
+}
+
+.horizontal-multi-3(@1C:@white, @1P:0%, @2C:@white, @2P:15%, @3C:@white, @3P:30%) {
+    //background-image  : -webkit-gradient(linear, 0 0, 0 100%, color-stop(@1P, @1C), color-stop(@2P, @2C), color-stop(@3P, @3C));
+    //background-image  : -webkit-linear-gradient(left, @1C @1P, @2C @2P, @3C @3P);
+    //background-image  : -ms-linear-gradient(left, @1C @1P, @2C @2P, @3C @3P);
+    //background-image  : linear-gradient(left, @1C @1P, @2C @2P, @3C @3P);
+    background-image  : linear-gradient(to right, @1C @1P, @2C @2P, @3C @3P);
+    background-repeat : repeat-x;
+}
+
+.vertical(@startColor : @white; @endColor:  @lightergrey) {
+    //background-image  : -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor));
+    //background-image  : -webkit-linear-gradient(top, @startColor, @endColor);
+    //background-color  : @endColor;
+    //background-image  : -ms-linear-gradient(top, @startColor, @endColor);
+    //background-image  : linear-gradient(top, @startColor, @endColor);
+    background-image: linear-gradient(to bottom, @startColor 0%, @endColor 100%);
+    background-repeat : repeat-x;
+}
+
+.verticalT(@startColor : @white; @endColor:  @lightergrey) {
+    background-image  : -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor));
+    background-image  : -webkit-linear-gradient(top, @startColor, @endColor);
+    background-image  : -ms-linear-gradient(top, @startColor, @endColor);
+    background-image  : linear-gradient(top, @startColor, @endColor);
+    background-image  : linear-gradient(to bottom, @startColor 0%, @endColor 100%);
+    background-repeat : repeat-x;
+}
+
+.vertical-multi-3(@1C:@white, @1P:0%, @2C:@white, @2P:15%, @3C:@white, @3P:30%) {
+    //background-image  : -webkit-gradient(linear, 0 0, 0 100%, color-stop(@1P, @1C), color-stop(@2P, @2C), color-stop(@3P, @3C));
+    //background-image  : -webkit-linear-gradient(top, @1C @1P, @2C @2P, @3C @3P);
+    //background-image  : -ms-linear-gradient(top, @1C @1P, @2C @2P, @3C @3P);
+    //background-image  : linear-gradient(top, @1C @1P, @2C @2P, @3C @3P);
+    background-image: linear-gradient(to bottom, @1C @1P, @2C @2P, @3C @3P);
+    background-repeat : repeat-x;
+}
+
+.directional(@startColor : @white; @endColor : @lightergrey; @deg : 45deg) {
+    //background-color  : @endColor;
+    //background-image  : -moz-linear-gradient(@deg, @startColor, @endColor);
+    //background-image  : -webkit-linear-gradient(@deg, @startColor, @endColor);
+    //background-image  : linear-gradient(@deg, @startColor, @endColor);
+    background-image  : linear-gradient(@deg, @startColor 0%, @endColor 100%);
+    background-repeat : repeat-x;
+}
+
+.radial(@startColor : @white; @endColor : @lightergrey;) {
+    background: -moz-radial-gradient(center, ellipse cover, @startColor 0%, @endColor 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,@startColor), color-stop(100%,@endColor));
+    background: -webkit-radial-gradient(center, ellipse cover, @startColor 0%, @endColor 100%);
+    background: -o-radial-gradient(center, ellipse cover, @startColor 0%, @endColor 100%);
+    background: -ms-radial-gradient(center, ellipse cover, @startColor 0%, @endColor 100%);
+    background: radial-gradient(ellipse at center, @startColor 0%, @endColor 100%);
+}
+
+// .rounded(VALUE);
+.rounded(@radius:4px) {
+    border-radius : @radius;
+}
+
+// .border-radius(VALUE,VALUE,VALUE,VALUE);
+.border-radius(@topleft: 0; @topright: 0; @bottomright: 0; @bottomleft: 0) {
+    border-radius : @topleft @topright @bottomright @bottomleft;
+}
+
+.border-rad-top(@radius) {
+    border-radius : @radius @radius 0 0;
+}
+
+.border-rad-btm(@radius) {
+    border-radius : 0 0 @radius @radius;
+}
+
+.border-rad-left(@radius) {
+    border-radius : @radius 0 0 @radius;
+}
+
+.border-rad-right(@radius) {
+    border-radius : 0 @radius @radius 0;
+}
+
+.border-rad-btm-left(@radius) {
+    border-radius : 0 0 0 @radius;
+}
+
+.border-rad-btm-right(@radius) {
+    border-radius : 0 0 @radius 0;
+}
+
+// .box-shadow(HORIZONTAL VERTICAL BLUR COLOR))
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
+    //-webkit-box-shadow : @shadow;
+    box-shadow : @shadow;
+}
+
+// .drop-shadow(HORIZONTAL, VERTICAL, BLUR, ALPHA);
+.drop-shadow(@x-axis: 0; @y-axis: 1px; @blur: 2px; @alpha: 0.1) {
+    //-webkit-box-shadow : @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+    box-shadow : @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+}
+
+// .drop-shadow(HORIZONTAL, VERTICAL, BLUR, ALPHA);
+.inner-shadow(@x-axis: 0; @y-axis: 1px; @blur: 2px; @alpha: 0.1) {
+    //-webkit-box-shadow : inset @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+    box-shadow : inset @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+}
+
+// .opacity(VALUE);
+.opacity(@opacity : .5) {
+    opacity : @opacity;
+    @filOpa: @opacity * 100;
+    filter:~"alpha(opacity=@{filOpa})";
+}
+
+// .rotate(VALUEdeg);
+.rotate(@deg) {
+    //-webkit-transform : rotate(@deg);
+    //-ms-transform : rotate(@deg);
+    transform : rotate(@deg);
+}
+
+// .scale(VALUE);
+.scale(@ratio) {
+    //-webkit-transform : scale(@ratio);
+    //-ms-transform : scale(@ratio);
+    transform : scale(@ratio);
+}
+
+// .skew(VALUE, VALUE);
+.skew(@x: 0; @y: 0) {
+    //-webkit-transform : skew(@x, @y);
+    //-ms-transform : skew(@x, @y);
+    transform : skew(@x, @y);
+}
+
+// .transition(PROPERTY DURATION DELAY(OPTIONAL) TIMING-FINCTION);
+.transition(@transition) {
+    //-webkit-transition : @transition;
+    transition : @transition;
+}
+
+// .translate(VALUE, VALUE)
+.translate(@x: 0; @y: 0) {
+    //-webkit-transform : translate(@x, @y);
+    //-ms-transform : translate(@x, @y);
+    transform : translate(@x, @y);
+}
+
+.translate3d(@x: 0; @y: 0; @z: 0) {
+    //-webkit-transform : translate3d(@x, @y, @z);
+    transform : translate3d(@x, @y, @z);
+}
+
+// ELEMENTS 				==============================
+
+
+// .background-alpha(VALUE VALUE);
+.background-alpha(@color: @white; @alpha: 1) {
+    background-color:@color;
+    background-color : hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+}
+
+// .box-sizing(VALUE); (border-box, padding-box, content-box)
+.box-sizing(@boxsize: border-box) {
+    //-moz-box-sizing : @boxsize;
+    box-sizing : @boxsize;
+}
+
+// Contain floats
+.clearfix() {
+    *zoom : 1;
+    &:before, &:after {
+        display: table;
+        content : "";
+    }
+    &:after {
+        clear : both;
+    }
+}
+
+// .userselect(VALUE) (all, element, none, text)
+.user-select(@select) {
+    -webkit-user-select : @select;
+    -moz-user-select : @select;
+	-ms-user-select : @select;
+    user-select : @select;
+}
+
+// Hidden but available to speaking browsers
+.visuallyhidden() {
+    overflow : hidden;
+    position : absolute;
+    clip : rect(0 0 0 0);
+    height : 1px;
+    width : 1px;
+    margin : -1px;
+    padding : 0;
+    border : 0;
+    &:active,
+    &:focus {
+        position : static;
+        clip : auto;
+        height : auto;
+        width : auto;
+        margin : 0;
+        overflow: visible;
+    }
+}
+
+// LAYOUT 				==============================
+
+// .columns(250px, 0, 24px, COLOR, solid, 1px)
+.columns(@colwidth: 250px; @colcount: 0; @colgap: 50px; @columnRuleColor: #eee; @columnRuleStyle: solid; @columnRuleWidth: 1px) {
+    //-webkit-column-width : @colwidth;
+    //-webkit-column-count : @colcount;
+    //-webkit-column-gap : @colgap;
+    //-webkit-column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+    //-moz-column-width : @colwidth;
+    //-moz-column-count : @colcount;
+    //-moz-column-gap : @colgap;
+    //-moz-column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+    column-width : @colwidth;
+    column-count : @colcount;
+    column-gap : @colgap;
+    column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+}
+
+.columns-noW(@colcount: 0; @colgap: 50px; @columnRuleColor: #eee; @columnRuleStyle: solid; @columnRuleWidth: 1px) {
+    //-webkit-column-count : @colcount;
+    //-webkit-column-gap : @colgap;
+    //-webkit-column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+    //-moz-column-count : @colcount;
+    //-moz-column-gap : @colgap;
+    //-moz-column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+    column-count : @colcount;
+    column-gap : @colgap;
+    column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+}
+
+.columns-noC(@colwidth: 250px; @colgap: 50px; @columnRuleColor: #eee; @columnRuleStyle: solid; @columnRuleWidth: 1px) {
+    //-webkit-column-width : @colwidth;
+    //-webkit-column-gap : @colgap;
+    //-webkit-column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+    //-moz-column-width : @colwidth;
+    //-moz-column-gap : @colgap;
+    //-moz-column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+    column-width : @colwidth;
+    column-gap : @colgap;
+    column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+}
+
+.columns-noCorG(@colwidth: 250px; @columnRuleColor: #eee; @columnRuleStyle: solid; @columnRuleWidth: 1px) {
+    //-webkit-column-width : @colwidth;
+    //-webkit-column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+    //-moz-column-width : @colwidth;
+    //-moz-column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+    column-width : @colwidth;
+    column-rule:@columnRuleColor @columnRuleStyle @columnRuleWidth;
+}
+
+.columns-noWorR(@colcount: 0; @colgap: 50px) {
+    //-webkit-column-count : @colcount;
+    //-webkit-column-gap : @colgap;
+    //-moz-column-count : @colcount;
+    //-moz-column-gap : @colgap;
+    column-count : @colcount;
+    column-gap : @colgap;
+}
+
+.columnsCW(@colwidth: 250px; @colcount: 0; @colgap: 50px) {
+    //-webkit-column-width : @colwidth;
+    //-webkit-column-count : @colcount;
+    //-webkit-column-gap : @colgap;
+    //-moz-column-width : @colwidth;
+    //-moz-column-count : @colcount;
+    //-moz-column-gap : @colgap;
+    column-width : @colwidth;
+    column-count : @colcount;
+    column-gap : @colgap;
+}
+
+.columns-noCorR(@colwidth: 250px; @colgap: 50px;) {
+    //-webkit-column-width : @colwidth;
+    //-webkit-column-gap : @colgap;
+    //-moz-column-width : @colwidth;
+    //-moz-column-gap : @colgap;
+    column-width : @colwidth;
+    column-gap : @colgap;
+}
+
+//--Custom
+.oneCol(@float: left) {
+    width:@oneCol;
+    float:@float;
+}
+.twoCol(@float: left) {
+    width:@twoCol;
+    float:@float;
+}
+
+.flipH() {
+    @scale: -1,1;
+    .scale(@scale);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+.flipY() {
+    @scale: 1,-1;
+    .scale(@scale);
+    filter: FlipV;
+    -ms-filter: "FlipV";
+}
+
+.seperator-h(@color:@grey; @height:2px) {
+    @trans: rgba(red(@color), green(@color), blue(@color), 0);
+    &:after {
+        width:100%;
+        height:@height;
+        display:block;
+        content:"";
+        .horizontal-multi-3(@trans, 0%, @color, 50%, @trans, 100%);
+        position:absolute;
+        top:0;
+        left:0;
+    }
+}
+
+.seperator-v(@color:@grey;@width:2px) {
+    @trans: rgba(red(@color), green(@color), blue(@color), 0);
+    &:after {
+        width:@width;
+        height:100%;
+        display:block;
+        content:"";
+        .vertical-multi-3(@trans, 0%, @color, 50%, @trans, 100%);
+        position:absolute;
+        top:0;
+        left:0;
+    }
+}
+
+//==Multi-column
+.column-block(base) {
+	.columnBlock {
+		border:1px solid @light;
+		padding:@padding;
+		margin:0 0 @padding;
+	}
+}
+.column-block(bp3) {
+	.columnBlock {
+		.oneCol(@float: left);
+		&:nth-child(3n+2) {
+			//Add margins to central column
+			margin-left: @padding;
+            margin-right: @padding;
+		}
+		&:nth-child(3n+1) {
+			clear:left!important;
+		}
+	}
+    //Adjust width of items in last row when not a multiple of 3
+    .autoWidthOrphans {
+        .columnBlock {
+            &:nth-child(3n + 1):last-child {
+                float: none;
+                width: 100%;
+            }
+            &:nth-child(3n + 1):nth-last-child(2),
+            &:nth-child(3n + 1):nth-last-child(2) + .columnBlock {
+               width: (50% - @padding);
+            }
+            &:nth-child(3n + 1):nth-last-child(2) {
+                margin:0 @padding 0 0;
+            }
+            &:nth-child(3n + 1):nth-last-child(2) + .columnBlock {
+                margin:0 0 0 @padding;
+            }
+        }
+    }
+    //Center orphans on last row
+    .centerOrphans {
+        .columnBlock {
+            //Center single orphan on last row
+            &:nth-child(3n + 1):last-child {
+                float: none;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            //Center 2 orphans on last row
+            &:nth-child(3n + 1):nth-last-child(2) {
+                margin-left: ((@oneCol / 2) + (@padding / 2));
+                margin-right:(@padding / 2);
+                + .columnBlock {
+                    margin-left:(@padding / 2);
+                    margin-right:((@oneCol / 2) + (@padding / 2));
+                }
+            }
+        }
+    }
+}
+.column-block(maxwidth) {
+	.columnBlock {
+        padding:@pad2;
+    }
+}
+.column-block(ie8) {
+	.columnBlock {
+		width: (100% - (@padding * 3)) / 3;
+		margin:0 (@padding / 2);
+	}
+}

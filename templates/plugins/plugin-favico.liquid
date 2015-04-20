@@ -1,0 +1,51 @@
+{% block title %}Favico.js{% endblock %}
+
+{% block precontent %}
+
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Favico.js - Make a use of your favicon{% endblock %}
+{% block content %}
+	<h2>Adds a number notification to the favicon.</h2>
+	<p>See full options at <a href="http://lab.ejci.net/favico.js/" target="_blank">http://lab.ejci.net/favico.js</a></p>
+    {% if global.favico %}
+        <a id="plusOne" class="btn" href="#">+1</a>
+		<a id="minusOne" class="btn" href="#">-1</a>
+	{% else %}
+		<p>Favico plugin disabled in '/models/_global.json'</p>
+    {% endif %}
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+	{% include "sidebar" %}
+{% endblock %}
+
+{% block scripts %}
+	{{ "favico-0.3.4.min.js" | asset_url | script_tag }}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var badge = 1;
+			var favicon=new Favico({
+				animation:'slide'
+			});
+			favicon.badge(badge);
+
+			$('#plusOne').click(function() {
+				badge = badge + 1;
+				favicon.badge(badge);
+				return false;
+			});
+			$('#minusOne').click(function() {
+				badge = (badge-1 < 0) ? 0 : (badge - 1);
+				favicon.badge(badge);
+				return false;
+			});
+		});
+	</script>
+{% endblock %}

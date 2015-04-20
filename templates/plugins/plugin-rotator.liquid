@@ -1,0 +1,33 @@
+{% block title %}Rotator Plugin{% endblock %}
+
+{% block precontent %}
+
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Rotator Plugin{% endblock %}
+{% block content %}
+    {% if global.rotator %}
+		{% case global.rotator-type %}
+		{% when 'flexslider' %}
+			<h2>Flexslider <a href="http://flexslider.woothemes.com/">http://flexslider.woothemes.com</a></h2>
+		{% when 'glidejs' %}
+			<h2>GlideJs <a href="http://jedrzejchalubek.com/glide/">http://jedrzejchalubek.com/glide</a></h2>
+		{% when 'nivo' %}
+			<h2>Nivo Slider <a href="http://docs.dev7studios.com/jquery-plugins/nivo-slider">http://docs.dev7studios.com/jquery-plugins/nivo-slider</a></h2>
+		{% endcase %}
+        <!-- Include rotator -->
+        {% include "rotator" with "true" %}
+	{% else %}
+		<p>Rotator plugin disabled in '/models/_global.json'</p>
+    {% endif %}
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+	{% include "sidebar" %}
+{% endblock %}

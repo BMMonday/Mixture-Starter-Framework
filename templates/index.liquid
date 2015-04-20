@@ -1,0 +1,40 @@
+{% block precontent %}
+    {% if global.rotator %}
+		<div class="rotator-wrap">
+			<div class="center">
+				{% include "rotator" with "false" %}
+			</div>
+		</div>
+    {% endif %}
+{% endblock %}
+
+{% block pagetitle %}Page Header goes here {% endblock %}
+{% block content %}
+    {{ 2 | lorem_ipsum:'p' }}
+{% endblock %}
+
+{% block postcontent %}
+    <div>
+		<section class="columnBlock">
+			<h1>Column Title</h1>
+			{{ 1 | lorem_ipsum:'p' }}
+		</section>
+		<section class="columnBlock">
+			<h1>Column Title</h1>
+			{{ 1 | lorem_ipsum:'p' }}
+		</section>
+		<section class="columnBlock">
+			<h1>Column Title</h1>
+			{{ 1 | lorem_ipsum:'p' }}
+		</section>
+	</div>
+{% endblock %}
+
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

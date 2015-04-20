@@ -1,0 +1,33 @@
+.bg() when (@social-bg = true) {
+	background:@light;
+	width:1.4em;
+	height:1.4em;
+	border-radius:@social-radius;
+	display:inline-block;
+	transition:all @trans;
+	i {
+		display:inline-block;
+		&:before {
+			line-height:1.4em;
+		}
+	}
+}
+.bg-hover() when (@social-bg = true) {
+	background:@lighter;
+}
+
+.socialLinks {
+    text-align:center;
+	padding:.3em 0;
+    a {
+        .font-size(20);
+        margin:0 .2em;
+        color:@dark;
+		.bg();
+        &:hover, &:focus {
+            text-decoration:none;
+            color:@darker;
+			.bg-hover();
+        }
+    }
+}

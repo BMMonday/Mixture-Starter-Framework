@@ -1,0 +1,733 @@
+// ==========================================================
+
+// 320 and Up by Andy Clarke
+// Version: 3.0
+// URL: http://stuffandnonsense.co.uk/projects/320andup/
+// Apache License: v2.0. http://www.apache.org/licenses/LICENSE-2.0
+
+// ==========================================================
+/*------------------------------------*\
+    $CONTENTS
+\*------------------------------------*/
+/**
+ * $GLOBAL.............Global and repeated styles (e.g. 'body' and 'hidden')
+ * $HEADER.............Page header styles
+ * $CONTENT............Page Content styles
+ * $SIDEBAR............Sidebar styles
+ * $FOOTER.............Page Footer styles
+ * $MISC...............Miscellaneous styles which don't fit anywhere else
+ * $MODERNIZR..........Styles based on classes added by Modernizr
+ */
+
+
+
+
+
+//------------------------------------ $GLOBAL ------------------------------------
+//== Sticky/Slideout Footer
+.fixedFooter(htmlbody);
+
+body {
+
+}
+
+.js .wrapper {
+    .fixedFooter(mainForm);
+}
+
+.js .wrapper-inner {
+    .fixedFooter(wrapper);
+}
+
+.offCanvasMenus, .offCanvasToggles {
+	display:none;
+}
+
+//Positions the content in a central column. Used within each section. That way each section can have it's own full page width background.
+.center {
+    width:@maxWidth;
+    margin:0 auto;
+}
+
+
+
+
+
+//----------------------------------- $Modules ------------------------------------
+//3-column layout
+.column-block(maxwidth);
+//==Rotator
+.rotator(maxwidth);
+//==Form layout
+.forms(maxwidth);
+
+
+
+//------------------------------------ $HEADER ------------------------------------
+.header {
+    padding:0;
+	.contact {
+		clear:right;
+		.phone, .email {
+			margin:0 .2em;
+		}
+	}
+}
+    .userBar {
+        background:@darker;
+        color:@white;
+    }
+    .dropdown {
+        position:relative;
+        background:@menuDD-bg;
+        ul {
+            font-size:inherit;
+            ul {
+                display:block;
+                position:absolute;
+                width:@subWidth;
+                min-width:100%;
+                top:-999em;
+                z-index:99;
+                //.font-size(14);
+                opacity:0;
+                transition: opacity @trans-menu, top 0s @trans-menu;
+                ul {
+                    border-color:@menuDD-drop-bg-hover;
+                    border-left-width:1px;
+                    border-left-style: solid;
+                    left: 100%;
+                }
+                li {
+                    & when (iscolor(@menuDD-drop-color)) {
+                        > a {
+                            color:@menuDD-drop-color;
+                        }
+                    }
+                    background:@menuDD-drop-bg;
+                    &:hover, &.emhover, &:focus {
+                        background:@menuDD-drop-bg-hover;
+                        > a {
+                            outline:0;
+                            color:@menuDD-color;
+                        }
+                        > ul {
+                            top:0;
+                        }
+                    }
+                }
+                    a {
+                        padding:.375em .6em;
+                        line-height:1em;
+                    }
+                        .middle {
+                            display:block;
+                            padding:0;
+                        }
+                        .showChildren {
+                            display:block;
+                            position:absolute;
+                            top:50%;
+                            margin-top:-.5em;
+                            right:.3em;
+                        }
+            }
+        }
+            li {
+                float:left;
+                position:relative;
+                &:hover, &.emhover, &:focus {
+                    > a {
+                        & when (iscolor(@menuDD-color-hover)) {
+                            color:@menuDD-color-hover;
+                        }
+                        text-decoration:none;
+                        outline:0;
+                    }
+                    > ul {
+                        opacity: 1;
+                        transition: opacity @trans-menu;
+                        top:100%;
+                    }
+                }
+            }
+                a {
+                    padding:0 .6em;
+                    color:@menuDD-color;
+                    transition: background @trans-menu, color @trans-menu;
+                }
+                    .left {
+                        margin: 0;
+                    }
+                    .right {
+                        margin:0 0 0 .2em;
+                    }
+                        i {
+                            transition:color @trans-menu;
+                        }
+        .level1 {
+            > li {
+                height:1.875em;
+                &:hover, &.emhover, &:focus {
+                    & when (iscolor(@menuDD-bg-hover)) {
+                        background: @menuDD-bg-hover;
+                    }
+                }
+                > a {
+                    line-height:1.875;
+                    height:1.875em;
+                }
+            }
+            > .hasChildren {
+                > a {
+                    .right {
+                        display:inline-block;
+                        i {
+                            .font-size(12);
+                            width:1em;
+                            &:before {
+                                .icon-arrow-down();
+                            }
+                        }
+                    }
+                }
+            }
+            .rightAligned {
+                .level2 {
+                    right:0;
+                    ul {
+                        left:-100%;
+                    }
+                }
+            }
+        }
+            .rightAligned {
+                .level2 {
+                    .showChildren {
+                        i:before {
+                            .icon-arrow-left();
+                        }
+                    }
+                    ul {
+                        border-left:0;
+                        border-right-width:1px;
+                        border-right-style:solid;
+                    }
+                }
+            }
+            .current, .parent {
+                & when (iscolor(@menuDD-color-current)) {
+                    > a {
+                        color:@menuDD-color-current;
+                    }
+                }
+                & when (iscolor(@menuDD-color-current-bg)) {
+                    background:@menuDD-color-current-bg;
+                }
+            }
+        //Mixin to display menu icons in desktop view ('@menuIcons' setting in _variables.less)
+        .menuIcons(maxwidth);
+        .excessLinks {
+            float:right;
+            > a {
+                padding:0 .6em;
+                .left {
+                    position:relative;
+                    left:0;
+                    width:auto;
+                    display:inline-block;
+                    top:auto;
+                    margin-top:0;
+                    vertical-align:middle;
+                    line-height:0;
+                }
+                .middle {
+                    //margin:0 4px 0 0;
+                }
+            }
+            .level2 {
+                & when (iscolor(@menuDD-bg-hover)) {
+                    border-top:2px solid @menuDD-bg-hover;
+                }
+                > li {
+                    background:@menuDD-bg;
+                    &:hover, &.emhover, &:focus {
+                        background:@menuDD-bg-hover;
+                        > a {
+                            color:@menuDD-color-hover;
+                        }
+                    }
+                    &.current, &.parent {
+                        & when (iscolor(@menuDD-color-current)) {
+                            > a {
+                                color:@menuDD-color-current;
+                            }
+                        }
+                        & when (iscolor(@menuDD-color-current-bg)) {
+                            background:@menuDD-color-current-bg;
+                        }
+                        &:hover, &.emhover, &:focus {
+                            background:@menuDD-bg-hover;
+                            > a {
+                                color:@menuDD-color-hover;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .headerNav {
+        clear:both;
+        width:100%;
+        & when (iscolor(@menuHN-bg)) {
+            background:@menuHN-bg;
+        }
+        ul {
+            .font-size(16);
+            ul {
+                ul {
+                    & when (iscolor(@menuHN-color)) {
+                        border-color:@menuHN-drop-bg-hover;
+                    }
+                }
+                li {
+                    &:hover, &.emhover {
+                        > a {
+                            & when (iscolor(@menuHN-color)) {
+                                color:@menuHN-color;
+                            }
+                            & when (iscolor(@menuHN-drop-bg-hover)) {
+                                background:@menuHN-drop-bg-hover;
+                            }
+                        }
+                    }
+                }
+                    a {
+                        & when (iscolor(@menuHN-drop-color)) {
+                            color:@menuHN-drop-color;
+                        }
+                        & when (iscolor(@menuHN-drop-bg)) {
+                            background:@menuHN-drop-bg;
+                        }
+                    }
+            }
+        }
+            li {
+                &:hover, &.emhover {
+                    > a {
+                        & when (iscolor(@menuHN-color-hover)) {
+                            color:@menuHN-color-hover;
+                        }
+                    }
+                }
+            }
+                a {
+                    & when (iscolor(@menuHN-color)) {
+                        color:@menuHN-color;
+                    }
+                }
+        .level1 {
+            > li {
+                &:hover, &.emhover {
+                    > a {
+                        & when (iscolor(@menuHN-bg-hover)) {
+                            background:@menuHN-bg-hover;
+                        }
+                    }
+                }
+            }
+        }
+            .current, .parent {
+                & when (iscolor(@menuHN-color-current)) {
+                    color:@menuHN-color-current;
+                }
+                & when (iscolor(@menuHN-color-current-bg)) {
+                    background:@menuHN-color-current-bg;
+                }
+            }
+            .excessLinks {
+                .level2 {
+                    & when (iscolor(@menuHN-bg-hover)) {
+                        border-color:@menuHN-bg-hover;
+                    }
+                    > li {
+                        > a {
+                            & when (iscolor(@menuHN-bg)) {
+                                background:@menuHN-bg;
+                            }
+                        }
+                        &:hover, &.emhover {
+                            > a {
+                                & when (iscolor(@menuHN-bg-hover)) {
+                                    background:@menuHN-bg-hover;
+                                }
+                                & when (iscolor(@menuHN-color-hover)) {
+                                    color:@menuHN-color-hover;
+                                }
+                            }
+                        }
+                        > .current, > .parent {
+                            & when (iscolor(@menuHN-color-current)) {
+                                color:@menuHN-color-current;
+                            }
+                            & when (iscolor(@menuHN-color-current-bg)) {
+                                background:@menuHN-color-current-bg;
+                            }
+                        }
+                    }
+                }
+            }
+    }
+    .userNav {
+        float:left;
+        //max-width:700px;//Also needs to be set in script.js
+        & when (iscolor(@menuUN-bg)) {
+            background:@menuUN-bg;
+        }
+        ul {
+            ul {
+                ul {
+                    & when (iscolor(@menuUN-color)) {
+                        border-color:@menuUN-drop-bg-hover;
+                    }
+                }
+                li {
+                    & when (iscolor(@menuUN-drop-color)) {
+                        > a {
+                            color:@menuUN-drop-color;
+                        }
+                    }
+                    & when (iscolor(@menuUN-drop-bg)) {
+                        background:@menuUN-drop-bg;
+                    }
+                    &:hover, &.emhover, &:focus {
+                        & when (iscolor(@menuUN-color)) {
+                            > a {
+                                color:@menuUN-color;
+                            }
+                        }
+                        & when (iscolor(@menuUN-drop-bg-hover)) {
+                            background:@menuUN-drop-bg-hover;
+                        }
+                    }
+                }
+            }
+        }
+            li {
+                &:hover, &.emhover, &:focus {
+                    & when (iscolor(@menuUN-color-hover)) {
+                        > a {
+                            color:@menuUN-color-hover;
+                        }
+                    }
+                }
+            }
+                a {
+                    & when (iscolor(@menuUN-color)) {
+                        color:@menuUN-color;
+                    }
+                }
+        .level1 {
+            > li {
+                &:hover, &.emhover, &:focus {
+                    & when (iscolor(@menuUN-bg-hover)) {
+                        background:@menuUN-bg-hover;
+                    }
+                }
+            }
+        }
+            .current, .parent {
+                & when (iscolor(@menuUN-color-current)) {
+                    a > {
+                        color:@menuUN-color-current;
+                    }
+                }
+                & when (iscolor(@menuUN-color-current-bg)) {
+                    background:@menuUN-color-current-bg;
+                }
+            }
+            .excessLinks {
+                .level2 {
+                    & when (iscolor(@menuUN-bg-hover)) {
+                        border-color:@menuUN-bg-hover;
+                    }
+                    > li {
+                        & when (iscolor(@menuUN-bg)) {
+                            background:@menuUN-bg;
+                        }
+                        &:hover, &.emhover, &:focus {
+                            & when (iscolor(@menuUN-bg-hover)) {
+                                background:@menuUN-bg-hover;
+                            }
+                            > a {
+                                & when (iscolor(@menuUN-color-hover)) {
+                                    color:@menuUN-color-hover;
+                                }
+                            }
+                        }
+                        &.current, &.parent {
+                            & when (iscolor(@menuUN-color-current)) {
+                                > a {
+                                    color:@menuUN-color-current;
+                                }
+                            }
+                            & when (iscolor(@menuUN-color-current-bg)) {
+                                background:@menuUN-color-current-bg;
+                            }
+                            &:hover, &.emhover, &:focus {
+                                & when (iscolor(@menuUN-bg-hover)) {
+                                    background:@menuUN-bg-hover;
+                                }
+                                > a {
+                                    & when (iscolor(@menuUN-color-hover)) {
+                                        color:@menuUN-color-hover;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    }
+	.centerMenuEg {
+		display:none;
+	}
+
+
+
+
+
+//------------------------------------ $CONTENT ------------------------------------
+.content {
+
+}
+	.main-wrap {
+		padding:0;
+		//Set width and position, for pages with the sidebar
+        &.withSidebar {
+            width:@contentWidth;
+			& when (@sidebarFloat = left) {
+	            float:right;
+	            padding:@pad2 0 0 @pad4;
+			}
+			& when (@sidebarFloat = right) {
+				float:left;
+				padding:@pad2 @pad4 0 0;
+			}
+        }
+	}
+    .section {
+
+    }
+
+//==Contact Page
+.contactDetails when (@forms) {
+    padding:0 0 0 (@pad * 6);
+}
+
+
+
+
+//------------------------------------ $SIDEBAR ------------------------------------
+.sidebar {
+    width:@sideWidth;
+    float:@sidebarFloat;
+    clear:none;
+    padding:@pad2 0 0;
+}
+    .sideNav {
+        width:100%;
+        margin:0 0 @pad2;
+		& when (iscolor(@menuSN-bg)) {
+			background:@menuSN-bg;
+		}
+        ul {
+			width:auto;
+            ul {
+				margin-left:1em;
+            }
+        }
+            li {
+				line-height:1.3;
+				margin:.5em 0;
+				&:hover, &.emhover {
+					> a {
+						& when (iscolor(@menuSN-color-hover)) {
+							color:@menuSN-color-hover;
+						}
+						& when (iscolor(@menuSN-bg-hover)) {
+							background:@menuSN-bg-hover;
+						}
+					}
+				}
+			}
+                a {
+                    padding:0;
+                    .font-size(14);
+                    & when (iscolor(@menuSN-color)) {
+						color:@menuSN-color;
+					}
+                }
+
+
+		.menuIcons(hide);
+    }
+
+
+
+
+
+//------------------------------------ $FOOTER ------------------------------------
+.footer {
+    width: 100%;
+    z-index:2;
+    .center {
+        padding:@pad2 0 0;
+    }
+}
+    .js .footer {
+		.fixedFooter(footer);
+	}
+
+    //Indent lower levels
+    .footerNav {
+		& when (iscolor(@menuFN-bg)) {
+			background:@menuFN-bg;
+		}
+		/*.level1 {
+            //Split into columns of 120px wide, with or without a rule
+            .columns(120px; 7; @pad4; @lighter; solid; 1px);
+            //.columns-noC(120px; @pad4; @lighter; solid; 1px);
+            //.columns-noCorR(120px; @pad4);
+        }*/
+    }
+
+
+
+
+
+//------------------------------------ $MISC ------------------------------------
+
+
+
+
+
+//------------------------------------ $MODERNIZR ------------------------------------
+.js {
+
+}
+.no-js {
+    .headerNav {
+        height:auto;
+    }
+}
+.touch {
+    .dropdown {
+        .level2 {
+            //Give the dropdown items a slightly different colour for touch screen, to differentiate them from the cloned parent, which style matches the parent item.
+            a {
+                padding-left:1.8em;
+                background:darken(@menuDD-drop-bg, 5);
+            }
+            .cloned {
+                a {
+                    padding-left:1.2em;
+                    background:@menuDD-drop-bg;
+                    &:hover, &:focus {
+                        background:darken(@menuDD-color, 10);
+                    }
+                }
+            }
+            .menuIcons(maxwidth-touch);
+        }
+    }
+	.headerNav {
+		.level2 {
+			a {
+				& when (iscolor(@menuHN-drop-bg)) {
+					background:darken(@menuHN-drop-bg, 5);
+				}
+			}
+			.cloned {
+				a {
+					& when (iscolor(@menuHN-drop-bg)) {
+						background:@menuHN-drop-bg;
+					}
+					&:hover, &:focus {
+						& when (iscolor(@menuHN-color)) {
+							background:darken(@menuHN-color, 10);
+						}
+					}
+				}
+			}
+		}
+	}
+	.userNav {
+		.level2 {
+			a {
+				& when (iscolor(@menuUN-drop-bg)) {
+					background:darken(@menuUN-drop-bg, 5);
+				}
+			}
+			.cloned {
+				a {
+					& when (iscolor(@menuUN-drop-bg)) {
+						background:@menuUN-drop-bg;
+					}
+					&:hover, &:focus {
+						& when (iscolor(@menuUN-color)) {
+							background:darken(@menuUN-color, 10);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//== TODO list for use in Mixture
+
+// TODO: Recreate as Partial View Macros:
+        //: Rotator (1 for each type)
+        //: PhoneLink (Simple Partial View?)
+
+// TODO: Check maplace marker bubble close image
+
+
+
+
+
+//==Browser Testing
+// TODO: Test with no-js
+
+//Before going live
+// TODO: Set @devMode to false
+// TODO: Run images through https://tinypng.com/
+// TODO: Add Rss feed meta
+// TODO: Remove unused animation classes
+// TODO: Setup print styles
+// TODO: Run through W3C validation tool
+// TODO: Check all images have alt tags
+// TODO: Check invalid css in chrome developer console
+// TODO: Create custom modernizr
+// TODO: Create Favicons (http://iconogen.com/)
+
+
+
+
+
+//======= offCanvas plugin notes
+// Can use original on all 3 positions, but not all transition types will work
+// Make note that extra menus added to a side will overwrite previous callback functions for that side
+
+// Add destroy method
+// Menu transitions slow in Firefox Mobile
+// Fix offcanvas lower levels bleeding through edge in chrome (sub-pixel width bug)
+    //: Temp fix by setting px width?
+// Add 3d transitions? (http://tympanus.net/Development/SidebarTransitions/)
+// Add different transitions for the sub-levels
+    //: Accordian
+
+//======= extendMenu plugin notes
+// Note that if contentEl not used, will use the menu width, which could cause problems with short left floated dropdown menus

@@ -1,0 +1,72 @@
+//mixins to add bullet and arrows styles only when set to true
+.arrows() when (@rotator-arrows = true) {
+    .flex-direction-nav {
+        a {
+            .opacity(0);
+            bottom:auto;
+            top:50%;
+            margin: ((@rotator-arrow-size / 2) * -1px) 0 0;
+        }
+		.flex-disabled {
+			.opacity(0);
+		}
+    }
+}
+.arrows2() when (@rotator-arrows = true) {
+	.flex-next, .flex-prev {
+		.opacity(1);
+	}
+	.flex-next {
+		right:5px;
+	}
+	.flex-prev {
+		left:5px;
+	}
+	.flex-disabled {
+		.opacity(.3);
+	}
+}
+.arrows-touch() {
+	.flex-direction-nav {
+        a {
+            .opacity(1);
+        }
+		.flex-disabled {
+			.opacity(.3);
+		}
+    }
+	.flex-next {
+		right:5px;
+	}
+	.flex-prev {
+		left:5px;
+	}
+}
+
+.bullets() when (@rotator-bullets = true) {
+    .flex-control-nav {
+		//text-align:left;
+        position:relative;
+        top:auto;
+        padding:.2em 0;
+		li {
+			//text-align:left;
+		}
+    }
+}
+
+.flexslider {
+    padding:0;
+	//margin: 0 0 (@rotator-bullet-size + 2px);
+    &:hover {
+        .arrows2();
+    }
+}
+
+.arrows();
+
+.bullets();
+
+.touch {
+	.arrows-touch();
+}

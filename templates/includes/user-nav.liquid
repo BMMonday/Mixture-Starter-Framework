@@ -1,0 +1,50 @@
+<ul class="level1">
+    {% for level1 in global.user-navigation %}
+        <li class="std{% if level1.sub != null and user-nav > 1 %} hasChildren{%endif %}{% for level2 in level1.sub %}{% if mixture.url == level2.url %} parent{% endif %}{% endfor %}{% if level1.icon != "" %} hasIcon{% endif %}{% if mixture.url == level1.url %} current{% endif %}">
+            <a href="/{{level1.url}}" role="menuitem">
+                {% if level1.icon != "" %}<span class="left"><i class="im icn-{{level1.icon}}" aria-hidden="true"></i></span>{%endif %}
+                <span class="middle">{{level1.title}}</span>
+                <span class="right{% if level1.sub != null and user-nav > 1 %} showChildren{%endif %}"><i class="im icn-arrow-right" aria-hidden="true"></i></span>
+            </a>
+            {% if user-nav > 1 and level1.sub %}
+                <ul class="level2">
+                    {% for level2 in level1.sub %}
+                    <li class="std{% if level2.sub != null and user-nav > 2 %} hasChildren{%endif %}{% for level3 in level2.sub %}{% if mixture.url == level3.url %} parent{% endif %}{% endfor %}{% if level2.icon != "" %} hasIcon{% endif %}{% if mixture.url == level2.url %} current{% endif %}">
+                        <a href="/{{level2.url}}" role="menuitem">
+                            {% if level2.icon != "" %}<span class="left"><i class="im icn-{{level2.icon}}" aria-hidden="true"></i></span>{%endif %}
+                            <span class="middle">{{level2.title}}</span>
+                            <span class="right{% if level2.sub != null and user-nav > 2 %} showChildren{%endif %}"><i class="im icn-arrow-right" aria-hidden="true"></i></span>
+                        </a>
+                        {% if user-nav > 2 and level2.sub %}
+                            <ul class="level3">
+                                {% for level3 in level2.sub %}
+                                <li class="std{% if level3.sub != null and user-nav > 3 %} hasChildren{%endif %}{% for level4 in level3.sub %}{% if mixture.url == level3.url %} parent{% endif %}{% endfor %}{% if level3.icon != "" %} hasIcon{% endif %}{% if mixture.url == level3.url %} current{% endif %}">
+                                    <a href="/{{level3.url}}" role="menuitem">
+                                        {% if level3.icon != "" %}<span class="left"><i class="im icn-{{level3.icon}}" aria-hidden="true"></i></span>{%else %}{%endif %}
+                                        <span class="middle">{{level3.title}}</span>
+                                        <span class="right{% if level3.sub != null and user-nav > 3 %} showChildren{%endif %}"><i class="im icn-arrow-right" aria-hidden="true"></i></span>
+                                    </a>
+                                    {% if user-nav > 3 and level3.sub %}
+                                        <ul class="level4">
+                                            {% for level4 in level3.sub %}
+                                            <li class="std{% if level4.sub != null and user-nav > 4 %} hasChildren{%endif %}{% if level4.icon != "" %} hasIcon{% endif %}{% if mixture.url == level4.url %} current{% endif %}">
+                                                <a href="/{{level4.url}}" role="menuitem">
+                                                    {% if level4.icon != "" %}<span class="left"><i class="im icn-{{level4.icon}}" aria-hidden="true"></i></span>{%endif %}
+                                                    <span class="middle">{{level4.title}}</span>
+                                                    <span class="right{% if level4.sub != null and user-nav > 4 %} showChildren{%endif %}"><i class="im icn-arrow-right" aria-hidden="true"></i></span>
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

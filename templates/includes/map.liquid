@@ -1,0 +1,34 @@
+<div class="map">
+	<div id="gmap" class="gmap"></div>
+	<div id="controls" class="gmap-controls clearfix"></div>
+</div>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
+{{ "maplace.js" | asset_url | script_tag }}
+{% for locs in global.map-markers %}
+	{% assign locsCount =forloop.length %} 
+{% endfor %}
+<script type="text/javascript">
+	$(document).ready(function(){
+		var Locs = [
+			{% for locs in global.map-markers %}
+				{
+					lat: {{locs.lat}},
+					lon: {{locs.lon}},
+					zoom: {{locs.zoom}}{% if locs.title != "" %},{% endif %}
+					{% if locs.title != "" %}title: '{{ locs.title }}'{% endif %}{% if locs.html != "" %},{% endif %}
+					{% if locs.html != "" %}html: '<h3>%title</h3>{{ locs.html }}'{% endif %}{% if locs.icon != "" %},{% endif %}
+					{% if locs.icon != "" %}icon: '{{ locs.icon }}'{% endif %}
+				}{% if locsCount > 1 %},{% endif %}
+			{% endfor %}
+		];
+		new Maplace({
+			locations: Locs,
+			controls_on_map: false,
+			controls_type: '{{ global.map-controls-type }}',
+			controls_applycss: false
+		}).Load();
+	});
+</script>
+
+    

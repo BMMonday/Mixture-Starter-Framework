@@ -1,0 +1,273 @@
+// ==========================================================
+
+// 320 and Up by Andy Clarke
+// Version: 3.0
+// URL: http://stuffandnonsense.co.uk/projects/320andup/
+// Apache License: v2.0. http://www.apache.org/licenses/LICENSE-2.0
+
+// ==========================================================
+
+//================================= Development Mode
+//While this is true, extra styles will be output for development purposes (e.g classes for testing each of the animations in _animations.less)
+@devMode: true;
+
+//================================= Activate Modules
+//By setting the following variables to true the necessary styles will be imported to the stylesheet
+//You will also need to set each matching property to true in 'models/_global.json' so the HTML is imported to the template
+@cookie-bar: true;//Remember to remove init from script.js if set to false
+
+@social-links: true;
+	@social-bg: true;
+	@social-radius: .35em;
+
+@rotator: true;
+    @rotator-type: "flexslider"; //"flexslider" or "glidejs" or "nivo". Flexslider is prefered as it has touch support and will allow swiping. Glidejs has smaller JS and LESS files and only has a slide animation. If using flexslider set the animation type in 'models/_global.json' as "fade" or "slide". Nivo has multiple animation types (see below).
+    @rotator-bullets: true;
+	@rotator-bullet-size: 16px;
+	@rotator-arrow-size:40;
+    @rotator-arrows: true;
+    @rotator-anim-speed: 600ms; //Also set in 'models/_global.json'.
+	//Nivo animation types (can use multiple as comma seperated list):
+		//sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random, slideInRight, slideInLeft, boxRandom, boxRain, boxRainReverse, boxRainGrow, boxRainGrowReverse
+	@rotatorBulletColour: @grey;
+		@rotatorBulletColourHover: darken(@rotatorBulletColour, 16);
+		@rotatorBulletColourActive: darken(@rotatorBulletColour, 30);
+	@rotatorArrowColour: @linkcolor;
+		@rotatorArrowColourHover: @linkcolorhover;
+@carousel: true;
+
+@forms: true;
+
+@modal: true;
+    @modal-type: "swipebox"; //"swipebox" or "nivo" or "featherlight" or "popeasy"
+    @title-height:30px; //Set the height of the title bar at the top
+    @action-bar-height:40px; //Set the height of the action bar for swipebox at the bottom (contains the close/prev/next buttons)
+    @modal-btn-size:24;
+@secondmodal: true;
+	@secondmodal-type: "featherlight"; //"swipebox" or "nivo" or "featherlight" or "popeasy"
+
+@map: true;
+
+@masonry: true;
+
+
+
+
+
+//================================= Activate Layout Options
+//Sidebar position - "left" or "right"
+@sidebarFloat: left;
+
+@menuTransition: "slideOnTop"; //"slideOnTop", "push", "reveal", "push-reveal"
+	@subLevelTransition: "slideOnTop"; //"slideOnTop", "push"
+@centerMenuTransition: "slideOnTop";//"slideOnTop"
+//Show icons in the offcanvas menus
+@menuIcons: true;
+	//Show icons in the navigation in desktop view
+	@menuIconsDesktop: true;
+
+//Stack Icons - only set to true if stacked icons used
+@stackIcons: true;
+
+//Use a "sticky" footer, or "Slideout" footer (//http://tutorialzine.com/2013/08/slideout-footer-css)
+@footer-style: "slideout"; //"sticky" or "slideout", or leave blank for standard footer. If "slideout", uncomment code to scroll to it when a link in it is focused, in script.js.
+
+//Set the position of the scroll to top button
+@toTop-pos: "br";//"tr", "br", "tl", "bl" for Top Right, Bottom Right, Top Left, or Bottom Left
+    @toTopbr: 30%;//Border Radius
+	@toTopInset: 40; //As int, must have value
+
+//Buttons
+@btns-fixed: true; //Set to true to allow fixed size button styles. Sizes are set in the classes .btn-small, .btn-mid and .btn-wide.
+
+
+//================================= Media Query Breakpoints
+@bp1: 480;
+@bp2: 590;
+@bp3: 768;
+
+
+
+
+//================================= CSS Variables
+//==ROOT
+@bodycolor	: @white;//@menubg;
+@textcolor	: @black;
+
+//==TYPOGRAPHY
+
+@basefont : Arial, Helvetica, sans-serif;
+@basefontsize : 16;
+@baselineheight : 1.5em;
+@baseheadingfont : inherit;
+@baseheadingfontweight : 400;
+@baseheadingfontcolor : inherit;
+
+@altfont : Cambria, Georgia, Times, "Times New Roman";
+@altlineheight : 1.35em;
+
+@codefont : Monaco, Courier New, monospace;
+
+//Custom Icon font
+@font-path: "../fonts";
+@font-name: "starter";
+@font-code: "-lekvlp";
+
+//==COLOUR
+@basecolor 		: #3F7CAC;
+
+@light: lighten(@basecolor, 15);
+@lighter: lighten(@basecolor, 30);
+@dark: darken(@basecolor, 15);
+@darker: darken(@basecolor, 25);
+
+@bordercolor    : lighten(@basecolor, 60%);
+
+//Convert colors to use an alpha value for transparency
+@light-trans: rgba(red(@light), green(@light), blue(@light), .6);
+@dark-trans: rgba(red(@dark), green(@dark), blue(@dark), .6);
+
+// Links
+@linkcolor 		    : darken(@basecolor, 10);
+@linkcolorhover 	: darken(@linkcolor, 10);
+@linkcolorvisited   : darken(@linkcolorhover, 10);
+@linkcolorfocus 	: @alt-hover;
+
+// greyscale
+@black 			: rgb(0,0,0);
+@darkgrey 		: lighten(@black, 25);
+@grey 			: lighten(@black, 50);
+@lightgrey 		: lighten(@black, 75);
+@lightergrey 	: lighten(@black, 90);
+@white 			: rgb(255,255,255);
+
+// tables
+@tablebackground 	: transparent;
+@tablestripe 		: lighten(@dark, 60);
+@tablehover 		: lighten(@dark, 50);
+@tableborder 		: lighten(@dark, 40);
+@tableborderwidth	: 1px;
+@tableborderstyle	: solid;
+
+//Misc colours
+@alertcolor     : rgb(218,79,73);
+@successcolor 	: rgb(91,183,91);
+
+//==LAYOUT
+@maxWidth: 980px; //Maximum width of column layout. Must also change variable in script.js. Will automatically create final media query
+
+@sideWidth: 200px;
+@contentWidth: (@maxWidth - @sideWidth);
+//@contentWidth: round(@maxWidth / 1.618);
+//@sideWidth: round(@maxWidth * 0.382);
+
+// Padding
+@padding: 2%; //Padding for screen sizes < maxWidth
+@pad: 5px; //Used for setting padding and margins of elements to keep them consistent
+@pad2: @pad * 2;
+@pad3: @pad * 3;
+@pad4: @pad * 4;
+@pad5: @pad * 5;
+@pad6: @pad * 6;
+
+//Columns - Used for creating 3 column layouts
+@oneCol: (100% - (@padding * 2)) / 3;
+@twoCol: @oneCol * 2;
+
+//== Menus
+//--Offscreen menu settings
+@menuWidth: 80%;
+@negMenuWidth: @menuWidth * -1;
+
+
+//Menu Toggle Colours
+@menuToggleBase: mix(@basecolor, @grey);//spin(@basecolor, 110);
+@menuToggleText: mix(@light, @lightgrey);//lighten(@menuToggleBase, 30);
+@menuToggleActive: darken(@menuToggleBase, 8);
+
+//--Menu Colours
+//All Menus - offcanvas and desktop view
+@menu-current: @basecolor; //Current menu item text color
+
+//Offcanvas
+@menuOC-base: @grey;
+@menuOC-bg: lighten(@menuOC-base, 15);
+@menuOC-bg-hover: darken(@menuOC-bg, 12);
+@menuOC-color: darken(@menuOC-base, 18);
+@menuOC-bg-current: contrast(@menuOC-color, mix(@menuOC-bg, @white, 80), mix(@menuOC-bg, @black, 80));
+@menuOC-color-current: null;//contrast(@menuOC-bg-current, mix(@menuOC-color, @white, 80), mix(@menuOC-color, @black, 80));
+@menuOC-arrow-bg: @menuOC-color;
+@menuOC-arrow-bg-hover: darken(@menuOC-arrow-bg, 12);
+@menuOC-arrow-color: @menuOC-bg;
+
+//Desktop View
+//Dropdown - Default colours for all dropdown menus, can be overridden for each below
+@menuDD-base: @basecolor;
+@menuDD-bg: darken(@menuDD-base, 20);
+@menuDD-bg-hover: darken(@menuDD-base, 15);//@dark;
+@menuDD-color: contrast(@menuDD-bg, lighten(@menuDD-base, 20), darken(@menuDD-base, 20));//contrast(@menuDD-bg, @light, @dark);
+@menuDD-color-hover: lighten(@menuDD-color, 12);//@lighter;
+@menuDD-color-current: @menuDD-color;
+@menuDD-color-current-bg: spin(@menuDD-bg, 90);
+@menuDD-drop-bg: @menuDD-bg-hover;//contrast(@menuDD-color, @basecolor, @dark);
+@menuDD-drop-bg-hover: darken(@menuDD-drop-bg ,12);
+@menuDD-drop-color: null;//
+
+//HeaderNav
+@menuHN-base: null;
+@menuHN-bg: null;//darken(@menuHN-base, 30);
+@menuHN-bg-hover: null;//darken(@menuHN-base, 20);//@dark;
+@menuHN-color: null;//contrast(@menuHN-bg, lighten(@menuHN-base, 20), darken(@menuHN-base, 20));
+@menuHN-color-hover: null;//lighten(@menuHN-color, 12);
+@menuHN-color-current: null;//@menuHN-color;
+@menuHN-color-current-bg: null;//spin(@menuHN-bg, 90);
+@menuHN-drop-bg: null;//@menuHN-bg-hover;
+@menuHN-drop-bg-hover: null;//darken(@menuHN-drop-bg ,12);
+@menuHN-drop-color: null;//
+
+//UserNav
+@menuUN-base: null;
+@menuUN-bg: null;//darken(@menuUN-base, 30);
+@menuUN-bg-hover: null;//darken(@menuUN-base, 20);//@dark;
+@menuUN-color: null;//contrast(@menuUN-bg, lighten(@menuUN-base, 20), darken(@menuUN-base, 20));
+@menuUN-color-hover: null;//lighten(@menuUN-color, 12);
+@menuUN-color-current: null;//@menuUN-color;
+@menuUN-color-current-bg: null;//spin(@menuUN-bg, 90);
+@menuUN-drop-bg: null;//@menuUN-bg-hover;
+@menuUN-drop-bg-hover: null;//darken(@menuUN-drop-bg ,12);
+@menuUN-drop-color: null;//
+
+//SideNav
+@menuSN-base: @darker;
+@menuSN-bg: transparent;//darken(@menuSN-base, 30);
+@menuSN-bg-hover: null;//darken(@menuSN-base, 20);//@dark;
+@menuSN-color: contrast(@menuSN-bg, lighten(@menuSN-base, 20), darken(@menuSN-base, 20));
+@menuSN-color-hover: darken(@menuSN-color, 18);
+@menuSN-color-current: darken(@menuSN-color, 30);
+@menuSN-color-current-bg: null;//spin(@menuSN-bg, 90);
+
+//FooterNav
+@menuFN-base: null;
+@menuFN-bg: null;//transparent;//darken(@menuFN-base, 30);
+@menuFN-bg-hover: null;//darken(@menuFN-base, 20);//@dark;
+@menuFN-color: null;//contrast(@menuFN-bg, lighten(@menuFN-base, 20), darken(@menuFN-base, 20));
+@menuFN-color-hover: null;//darken(@menuFN-color, 18);
+@menuFN-color-current: null;//darken(@menuFN-color, 30);
+@menuFN-color-current-bg: null;//spin(@menuFN-bg, 90);
+
+//Offcanvas menu toggles
+@nbh: 45;
+@navBarHeight: @nbh * 1px;
+@nbhFont: floor(@nbh * 0.8); //Set icon size based on height
+
+//Width of dropdown menus. Also set in script.js for calculation of 'More' menu overflow
+@subWidth:200px;
+
+//================================= Misc
+//Logo dimensions
+@logoWidth: 250;
+@logoHeight: 100;
+@sep-color: @light; //Colour for the seperator gradients
+@alt-hover: spin(@dark, 120); //Alternate hover color, using spin to increase the hue away from the rest of the colour scheme
+@trans: .4s; //Transition time - used for the offcanvas menus, but can be used elsewhere to have a common UX across the site
+@trans-menu: .2s; //Faster transition time for the menu dropdowns

@@ -1,0 +1,140 @@
+{% block title %}About - Umbraco Boilerplate for Mixture{% endblock %}
+
+{% block styles %}
+	<style media="screen" type="text/css">
+		#anim-wrap {
+			position:relative;
+		}
+			#animationSwitcher {
+				
+			}
+			#animTarget {
+				width:200px;
+				height:150px;
+				background:#da4f49;
+				position:absolute;
+				right:5%;
+				
+				-webkit-animation-duration: 1s;
+				animation-duration: 1s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			#animTarget.hinge {
+				-webkit-animation-duration: 2s;
+				animation-duration: 2s;
+			}
+	</style>
+{% endblock %}
+
+
+{% block precontent %}
+    
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Page Header goes here {% endblock %}
+{% block content %}
+	<p></p>
+	<div id="anim-wrap">
+		<select id="animationSwitcher">
+			<option value="">Choose..</option>
+			<option value="bounce">Bounce</option>
+			<option value="flash">Flash</option>
+			<option value="pulse">Pulse</option>
+			<option value="rubberband">Rubberband</option>
+			<option value="shake">Shake</option>
+			<option value="swing">Swing</option>
+			<option value="tada">Tada</option>
+			<option value="wobble">Wobble</option>
+			<option value="bounceIn">Bounce In</option>
+			<option value="bounceInDown">Bounce In Down</option>
+			<option value="bounceInLeft">Bounce In Left</option>
+			<option value="bounceInRight">Bounce In Right</option>
+			<option value="bounceInUp">Bounce In Up</option>
+			<option value="bounceOut">Bounce Out</option>
+			<option value="bounceOutDown">Bounce Out Down</option>
+			<option value="bounceOutLeft">Bounce Out Left</option>
+			<option value="bounceOutRight">Bounce Out Right</option>
+			<option value="bounceOutUp">Bounce Out Up</option>
+			<option value="fadeIn">Fade In</option>
+			<option value="fadeInDown">Fade In Down</option>
+			<option value="fadeInDownBig">Fade In Down Big</option>
+			<option value="fadeInLeft">Fade In Left</option>
+			<option value="fadeInLeftBig">Fade In Left Big</option>
+			<option value="fadeInRight">Fade In Right</option>
+			<option value="fadeInRightBig">Fade In Right Big</option>
+			<option value="fadeInUp">Fade In Up</option>
+			<option value="fadeInUpBig">Fade In Up Big</option>
+			<option value="fadeOut">Fade Out</option>
+			<option value="fadeOutDown">Fade Out Down</option>
+			<option value="fadeOutDownBig">Fade Out Down Big</option>
+			<option value="fadeOutLeft">Fade Out Left</option>
+			<option value="fadeOutLeftBig">Fade Out Left Big</option>
+			<option value="fadeOutRight">Fade Out Right</option>
+			<option value="fadeOutRightBig">Fade Out Right Big</option>
+			<option value="fadeOutUp">Fade Out Up</option>
+			<option value="fadeOutUpBig">Fade Out Up Big</option>
+			<option value="flip">Flip</option>
+			<option value="flipInX">Flip In X</option>
+			<option value="flipInY">Flip In Y</option>
+			<option value="flipOutX">Flip Out X</option>
+			<option value="flipOutY">Flip Out Y</option>
+			<option value="lightSpeedIn">Light Speed In</option>
+			<option value="lightSpeedOut">Light Speed Out</option>
+			<option value="rotateIn">Rotate In</option>
+			<option value="rotateInDownLeft">Rotate In Down Left</option>
+			<option value="rotateInDownRight">Rotate In Down Right</option>
+			<option value="rotateInUpLeft">Rotate In Up Left</option>
+			<option value="rotateInUpRight">Rotate In Up Right</option>
+			<option value="rotateOut">Rotate Out</option>
+			<option value="rotateOutDownLeft">Rotate Out Down Left</option>
+			<option value="rotateOutDownRight">Rotate Out Down Right</option>
+			<option value="rotateOutUpLeft">Rotate Out Up Left</option>
+			<option value="rotateOutUpRight">Rotate Out Up Right</option>
+			<option value="slideInDown">Slide In Down</option>
+			<option value="slideInLeft">Slide In Left</option>
+			<option value="slideInRight">Slide In Right</option>
+			<option value="slideInUp">Slide In Up</option>
+			<option value="slideOutDown">Slide Out Down</option>
+			<option value="slideOutLeft">Slide Out Left</option>
+			<option value="slideOutRight">Slide Out Right</option>
+			<option value="slideOutUp">Slide Out Up</option>
+			<option value="hinge">Hinge</option>
+			<option value="rollIn">Roll In</option>
+			<option value="rollOut">Roll Out</option>
+			<option value="zoomIn">Zoom In</option>
+			<option value="zoomInDown">Zoom In Down</option>
+			<option value="zoomInLeft">Zoom In Left</option>
+			<option value="zoomInRight">Zoom In Right</option>
+			<option value="zoomInUp">Zoom In Up</option>
+			<option value="zoomOut">Zoom Out</option>
+			<option value="zoomOutDown">Zoom Out Down</option>
+			<option value="zoomOutLeft">Zoom Out Left</option>
+			<option value="zoomOutRight">Zoom Out Right</option>
+			<option value="zoomOutUp">Zoom Out Up</option>
+			<option value="spin">Spin</option>
+		</select>
+		
+		<div id="animTarget"></div>
+	</div>
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+    {% include "sidebar" %}
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#animationSwitcher').on('change', function() {
+				$('#animTarget').removeClass().addClass($(this).val());
+			})
+		});
+	</script>
+{% endblock %}

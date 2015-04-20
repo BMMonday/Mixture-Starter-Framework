@@ -1,0 +1,8 @@
+<select class="customSelect">
+	<option value=""></option>
+	{% for option in global.font-icons %}
+		<option value="{{ option.icon }}">{{ option.icon }}</option>
+	{% endfor %}
+</select>
+
+{{ "customSelect.js" | asset_url | script_tag }}

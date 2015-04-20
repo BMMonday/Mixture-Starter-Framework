@@ -1,0 +1,87 @@
+//==Rotator
+.bullets() when (@rotator-bullets = true) {
+    .slider-nav {
+        position: absolute;
+        top: ((45px - @rotator-bullet-size) / 2);
+        line-height:0;
+        width:100%;
+        text-align:center;
+    }
+        .slider-nav__item {
+            width: @rotator-bullet-size;
+            height: @rotator-bullet-size;
+            display: inline-block;
+            margin: 0 @pad;
+			background:@rotatorBulletColour;
+            .rounded(50%);
+            //.inner-shadow(0, 0, 3px, .3);
+			.transition(background @trans);
+            &:hover, &:focus {
+				background:@rotatorBulletColourHover;
+            }
+            &.slider-nav__item--current {
+                background:@rotatorBulletColourActive;
+                cursor: default;
+            }
+        }
+}
+.arrows() when (@rotator-arrows = true) {
+    .slider-arrows { }
+        .slider-arrow, .slider-arrow:visited {
+            color:@dark;
+        }
+        .slider-arrow {
+            position: absolute;
+            display: block;
+            top:@pad;
+            z-index: 10;
+            cursor: pointer;
+            .transition(all .3s ease);
+            &:hover, &:focus {
+                color:@basecolor;
+                text-decoration:none;
+				outline:0;
+            }
+            i {
+                .font-size(@rotator-arrow-size);
+            }
+        }
+            .slider-arrow--right {
+                right: @padding;
+            }
+            .slider-arrow--left {
+                left: @padding;
+            }
+}
+
+.rotator {
+    .center {
+        position:relative;
+    }
+}
+//Glide.js
+.glideslider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding:45px 0 0;
+}
+    .slides {
+        height: 100%;
+        list-style:none;
+        margin:0;
+        padding:0;
+        overflow: hidden;
+        .transition(all @rotator-anim-speed cubic-bezier(0.165, 0.840, 0.440, 1.000));
+        li {
+            height: 100%;
+            float: left;
+            clear: none;
+            position:relative;
+        }
+    }
+    
+    .arrows();
+    
+    .bullets();
+    

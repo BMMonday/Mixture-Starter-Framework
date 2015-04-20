@@ -1,0 +1,27 @@
+{% block title %}Modal Popup Example - Umbraco Boilerplate for Mixture{% endblock %}
+
+{% block precontent %}
+    
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Modal Popup{% endblock %}
+{% block content %}
+		{% if global.modal %}
+        <!-- Include modal -->
+        {% include "modal" %}
+    {% endif %}
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+		{% include "sidebar" %}
+{% endblock %}
+
+{% block scripts %}
+    
+{% endblock %}

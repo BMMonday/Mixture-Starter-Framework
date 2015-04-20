@@ -1,0 +1,365 @@
+{
+    "cookie-bar": true,
+
+    "rotator": true,
+        "rotator-type": "flexslider",
+        "rotator-anim": "slide",
+            "nivo-slices": "15",
+            "nivo-boxCols": "8",
+            "nivo-boxRows": "4",
+        "rotator-bullets": true,
+        "rotator-arrows": true,
+        "rotator-speed": "700000",
+        "animationSpeed": 600,
+    "carousel": true,
+        "carousel-bullets": true,
+        "carousel-arrows": true,
+        "carousel-speed": "7000",
+
+    "contactform": true,
+
+    "social-links": true,
+
+    "modal": true,
+        "modal-type": "swipebox",
+        "nivo-modal-anim": "fadeScale",
+    "modal2": true,
+        "modal2-type": "featherlight",
+
+	"favico": true,
+
+	"map": true,
+	"map-controls-type": "list",
+	"map-markers": [
+		{
+			"lat": "51.600949",
+			"lon": "-3.342345",
+			"zoom": "14",
+			"title": "Pontypridd",
+			"html": "",
+			"icon": ""
+		},
+		{
+			"lat": "51.540685",
+			"lon": "-3.262527",
+			"zoom": "14",
+			"title": "Info Bubble",
+			"html": "Raising your profile online",
+			"icon": ""
+		},
+		{
+			"lat": "51.566771",
+			"lon": "-3.317114",
+			"zoom": "14",
+			"title": "Custom Marker",
+			"html": "",
+			"icon": "/images/map-marker.png"
+		}
+	],
+
+	"masonry": true,
+
+	"image-zoom": true,
+
+	"global-navigation": [
+        {
+    		"title": "Home",
+    		"url": "index",
+    		"icon": ""
+        },
+        {
+    		"title": "About",
+    		"url": "about",
+    		"icon": ""
+        },
+        {
+    		"title": "jQuery Plugins",
+    		"url": "plugins",
+    		"icon": "puzzle",
+    		"sub": [
+    			{
+    				"title": "Rotator",
+    				"url": "plugins/plugin-rotator",
+    				"icon": "images"
+    			},
+    			{
+    				"title": "Modal",
+    				"url": "plugins/plugin-modal",
+    				"icon": "popup"
+    			},
+    			{
+    				"title": "Map",
+    				"url": "plugins/plugin-map",
+    				"icon": "map-marker"
+    			},
+    			{
+    				"title": "Column Height Equalizer &amp; 3 column list demo",
+    				"url": "plugins/plugin-column-equalizer",
+    				"icon": "columns"
+    			},
+    			{
+    				"title": "Icon Selector",
+    				"url": "plugins/plugin-custom-select",
+    				"icon": "grid"
+    			},
+    			{
+    				"title": "Favico",
+    				"url": "plugins/plugin-favico",
+    				"icon": "square"
+    			}
+    		]
+        },
+        {
+    		"title": "No Sidebar",
+    		"url": "no-sidebar",
+    		"icon": ""
+        },
+        {
+    		"title": "Font Icons",
+    		"url": "font-icons",
+    		"icon": ""
+        },
+    	{
+    		"title": "Buttons",
+    		"url": "buttons",
+    		"icon": ""
+        },
+    	{
+    		"title": "Animations",
+    		"url": "animations",
+    		"icon": ""
+        },
+        {
+    		"title": "Contact",
+    		"url": "contact",
+    		"icon": "envelope"
+        },
+        {
+    		"title": "Right Aligned",
+    		"url": "loremipsum",
+    		"icon": "",
+    		"sub": [
+    			{
+    				"title": "Level 2-1",
+    				"url": "services/service1",
+    				"icon": ""
+    			},
+    			{
+    				"title": "Level 2-2",
+    				"url": "services/service1",
+    				"icon": "",
+                    "sub": [
+                        {
+                            "title": "Level 3-1",
+                            "url": "services/service1",
+                            "icon": ""
+                        },
+                        {
+                            "title": "Level 3-2",
+                            "url": "services/service1",
+                            "icon": ""
+                        },
+                        {
+                            "title": "Level 3-3",
+                            "url": "services/service1",
+                            "icon": ""
+                        },
+                        {
+                            "title": "Level 3-4",
+                            "url": "services/service1",
+                            "icon": ""
+                        }
+                    ]
+                },
+                {
+                    "title": "Level 2-3",
+                    "url": "services/service1",
+                    "icon": ""
+                },
+                {
+                    "title": "Level 2-4",
+                    "url": "services/service1",
+                    "icon": ""
+                }
+    		]
+        },
+        {
+    		"title": "Overflowing",
+    		"url": "loremipsum",
+    		"icon": "",
+    		"sub": [
+    			{
+    				"title": "Level 2-1",
+    				"url": "services/service1",
+    				"icon": ""
+    			},
+    			{
+    				"title": "Level 2-2 Long Title (Sub-menu)",
+    				"url": "services/service2longtitle",
+    				"icon": "",
+    				"sub": [
+    					{
+    						"title": "Level 3",
+    						"url": "services/service1",
+    						"icon": ""
+    					},
+    					{
+    						"title": "Level 3 (sub-menu)",
+    						"url": "services/service1",
+    						"icon": "",
+    						 "sub": [
+    							{
+    								"title": "Level 4",
+    								"url": "services/service1",
+    								"icon": ""
+    							},
+    							{
+    								"title": "Level 4",
+    								"url": "services/service1",
+    								"icon": ""
+    							},
+    							{
+    								"title": "Level 4",
+    								"url": "services/service1",
+    								"icon": ""
+    							},
+    							{
+    								"title": "Level 4",
+    								"url": "services/service1",
+    								"icon": ""
+    							}
+    						]
+    					},
+    					{
+    						"title": "Level 3",
+    						"url": "services/service1",
+    						"icon": ""
+    					}
+    				]
+    			},
+    			{
+    				"title": "Level 2-3",
+    				"url": "services/service3",
+    				"icon": ""
+    			},
+    			{
+    				"title": "Level 2-4",
+    				"url": "services/service4",
+    				"icon": ""
+    			}
+    		]
+        }
+	],
+
+	"user-navigation": [
+		{
+			"title": "Account",
+			"url": "account",
+			"icon": "",
+			"sub": [
+				{
+					"title": "Details",
+					"url": "account",
+					"icon": ""
+				},
+				{
+					"title": "Addresses",
+					"url": "account",
+					"icon": ""
+				},
+				{
+					"title": "Orders",
+					"url": "account",
+					"icon": ""
+				}
+			]
+		},
+		{
+			"title": "Lorem",
+			"url": "lorem",
+			"icon": "map-marker"
+		},
+		{
+			"title": "Ipsum",
+			"url": "ipsum",
+			"icon": "puzzle"
+		},
+		{
+			"title": "Dolor",
+			"url": "dolor",
+			"icon": "popup"
+		}
+	],
+
+	"font-icons": [
+		{
+			"icon": "arrow-left"
+		},
+		{
+			"icon": "arrow-right"
+		},
+		{
+			"icon": "arrow-up"
+		},
+		{
+			"icon": "arrow-down"
+		},
+		{
+			"icon": "home"
+		},
+		{
+			"icon": "menu"
+		},
+		{
+			"icon": "youtube"
+		},
+		{
+			"icon": "twitter"
+		},
+		{
+			"icon": "facebook"
+		},
+		{
+			"icon": "pinterest"
+		},
+		{
+			"icon": "linkedin"
+		},
+		{
+			"icon": "rss"
+		},
+		{
+			"icon": "loading spin-icon"
+		},
+		{
+			"icon": "envelope"
+		},
+		{
+			"icon": "close"
+		},
+		{
+			"icon": "puzzle"
+		},
+		{
+			"icon": "map-marker"
+		},
+		{
+			"icon": "popup"
+		},
+		{
+			"icon": "images"
+		},
+		{
+			"icon": "columns"
+		},
+		{
+			"icon": "grid"
+		},
+		{
+			"icon": "ellipsis"
+		},
+		{
+			"icon": "square"
+		}
+	]
+}

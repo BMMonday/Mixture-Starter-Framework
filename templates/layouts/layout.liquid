@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" class="no-js">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- Title block allowing child pages to override -->
+        <title>{% block title %}Umbraco Boilerplate for Mixture{% endblock %}</title>
+
+        <!-- Google Chrome Frame for IE -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+        <!-- Styles -->
+        <link href="/css/style.min.css" rel="stylesheet" type="text/css" media="all">
+        <!--[if lte IE 8]>
+            <link href="/css/ie8.min.css" rel="stylesheet" type="text/css" media="all">
+        <![endif]-->
+        <!-- Style block allowing child pages to inject their own styles -->
+        {% block styles %}{% endblock %}
+
+        <script type="text/javascript" src="/scripts/modernizr-latest.min.js"></script>
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript">
+            if (typeof jQuery == 'undefined') {
+              document.write(unescape("%3Cscript src='/scripts/jquery-1.11.2.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!--[if lte IE 7]>
+            {{ "ie7.min.css" | asset_url | stylesheet_tag }}
+            <script type="text/javascript">
+            //$(document).ready(function () {
+            //    var li = $('#headerNav').find('li');
+            //    li.mouseover(function () {
+            //        $(this).addClass('sfhover');
+            //    });
+            //    li.mouseout(function () {
+            //        $(this).removeClass('sfhover');
+            //    });
+            //});
+            </script>
+        <![endif]-->
+
+        <script src="/scripts/js-webshim/minified/polyfiller.js"></script>
+        <script>
+            webshim.setOptions("forms", {
+                lazyCustomMessages: true,
+                replaceValidationUI: false,
+                customDatalist: "auto",
+                list: {
+                    "filter": "^"
+                }
+            });
+            if (!Modernizr.inputtypes.date) {
+                //configure forms-ext features
+                webshim.setOptions("forms-ext", {
+                    replaceUI: "auto",
+                    types: "date",
+                    date: {
+                        startView: 2,
+                        openOnFocus: true,
+                        classes: "show-week"
+                    }
+                });
+            }
+
+            //request the features you need:
+            webshim.polyfill('forms forms-ext');
+
+            $(function () {
+                // use all implemented API-features on DOM-ready
+            });
+        </script>
+    </head>
+
+    <body class="{% block bodyclass %}{% endblock %}">
+        <div class="wrapAll">
+            <div id="offCanvasHolder" class="offCanvasHolder"></div>
+            <!-- Add a 'scroll to top' button -->
+            <a id="toTop" href="#" class="toTop" tabindex="-1"><i class="im icn-arrow-up" title="Back to Top"></i></a>
+            <div id="wrapper" class="wrapper">
+                <div id="wrapper-inner" class="wrapper-inner">
+                    <!-- Include header -->
+                    {% include "header" %}
+
+                    <!-- Pre-content block -->
+                    {% block precontent %}{% endblock %}
+
+                    <div id="content" class="content">
+                        <div class="center clearfix">
+							<div class="main-wrap clearfix {% block sectionclass %}{% endblock %}">
+								<section id="section" class="section clearfix">
+									<header role="heading">
+										<h1>{% block pagetitle %}{% endblock %}</h1>
+									</header>
+									<div id="main" role="main" class="main">
+										<!-- Content block, child page inject content -->
+										{% block content %}{% endblock %}
+									</div>
+									<footer>
+										{% block contentfooter %}{% endblock %}
+									</footer>
+								</section>
+
+								<!-- Post content sections-->
+								{% block postcontent %}{% endblock %}
+							</div>
+
+                            <!-- Sidebar block -->
+                            {% block sidebar %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+                <!-- Include footer -->
+                {% include "footer" %}
+            </div>
+    		<!--[if lte IE 7]>
+                {{ "borderBoxModel.min.js" | asset_url | script_tag }}
+            <![endif]-->
+
+            <script type="text/javascript" src="/scripts/main.js"></script>
+            <!-- Script block allowing child pages to inject their own scripts -->
+            {% block scripts %}{% endblock %}
+        </div>
+    </body>
+</html>

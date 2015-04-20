@@ -1,0 +1,15 @@
+<footer id="footer" class="footer" role="contentinfo">
+	<div class="center">
+		<nav role="navigation" id="footerNav" class="footerNav clearfix">
+			<div class="menu">
+				<!-- Include global navigation -->
+				{% include "global-nav" with "2" %}
+			</div>
+		</nav>
+
+		<div class="ftr-btm clearfix">
+			<div class="copyright">Copyright &copy; {{ 'now' | date: "%Y" }}<!--<%=DateTime.Now.Year.ToString()%>--> [Company Name].</div>
+			<span class="sdb">Site designed by Bryn Monday</span>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,69 @@
+.bullets() when (@rotator-bullets = true) {
+    .slider-nav {
+        bottom:0;//((@rotator-bullet-size + @pad) * -1);
+        top:auto;
+    }
+}
+.arrows() when (@rotator-arrows = true) {
+    .slider-arrow {
+        .opacity(0);
+        bottom:auto;
+        top:50%;
+        margin: -20px 0 0;
+    }
+        .slider-arrow--right {
+            right:0;
+            &:focus {
+                right:5px;
+                .opacity(1);
+            }
+        }
+        .slider-arrow--left {
+            left:0;
+            &:focus {
+                left:5px;
+                .opacity(1);
+            }
+        }
+}
+.arrows2() when (@rotator-arrows = true) {
+    .slider-arrow {
+        .opacity(1);
+    }
+    .slider-arrow--right {
+        right:5px;
+    }
+    .slider-arrow--left {
+        left:5px;
+    }
+}
+
+.arrows-touch() when (@rotator-arrows = true) {
+    .slider-arrow {
+        .opacity(.8);
+    }
+        .slider-arrow--right {
+            right:5px;
+        }
+        .slider-arrow--left {
+            left:5px;
+        }
+}
+
+.glideslider {
+    padding:0 0 (@rotator-bullet-size + @pad);
+    //height:330px;
+    overflow:hidden;
+    &:hover {
+        .arrows2();
+    }
+}
+    .bullets();
+    
+    .arrows();
+	
+	.touch {
+		.arrows-touch();
+	}
+	
+	

@@ -1,0 +1,36 @@
+{% block title %}Contact Us - Umbraco Boilerplate for Mixture{% endblock %}
+
+{% block precontent %}
+    
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Contact Us{% endblock %}
+{% block content %}
+    {% include "contactForm" %}
+    
+    <div class="contactDetails">
+        <p>
+            Lorem Ipsum Ltd.<br>
+            Dolor House,<br>
+            Site Amet Road,<br>
+            Cardiff,<br>
+            CF15 1AB,<br>
+            UK
+        </p>
+        <p>
+            <span class="em">Tel:</span>+44 (0)01 3456 7890<br>
+            <span class="em">Fax:</span>+44 (0)01 3456 7890<br>
+            <span class="em">E-mail:</span><a href="mailto:email@domain.com">email@domain.com</a>
+        </p>
+		</div>
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+	{% include "sidebar" %}
+{% endblock %}

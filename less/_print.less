@@ -1,0 +1,115 @@
+// ==========================================================
+
+// 320 and Up by Andy Clarke
+// Version: 3.0
+// URL: http://stuffandnonsense.co.uk/projects/320andup/
+// Apache License: v2.0. http://www.apache.org/licenses/LICENSE-2.0
+
+// ==========================================================
+
+/* Print =================================================== */
+
+//==Mixins (only include if each module is true)
+.rotator(print) when (@rotator = true) {
+    @import "modules/rotator/_rotator-print.less";
+}
+.social(print) when (@social-links = true) {
+    @import "modules/sociallinks/_sociallinks-print.less";
+}
+.modal(print) when (@modal = true) and (@modal-type = "nivo") {
+    @import "modules/modal/nivo/_modal-nivo-print.less";
+}
+.modal(print) when (@modal = true) and (@modal-type = "swipebox") {
+    @import "modules/modal/swipebox/_modal-swipebox-print.less";
+}
+
+// ROOT 					==============================
+
+* {
+    background-color : transparent !important;
+    color : black !important;
+    box-shadow : none !important;
+    text-shadow : none !important;
+    filter : none !important;
+    -ms-filter : none !important;
+}
+
+page {
+    margin : 0.5cm;
+}
+
+// TYPOGRAPHY 			==============================
+
+h2, h3 {
+    orphans : 3;
+    widows : 3;
+    page-break-after : avoid;
+}
+
+p {
+    orphans : 3;
+    widows : 3;
+}
+
+pre, blockquote {
+    border : 1px solid @grey;
+    page-break-inside : avoid;
+}
+
+//abbr[title]:after {
+//    content: " (" attr(title) ")";
+//}
+
+// COLOUR 				==============================
+
+a, a:visited {
+    text-decoration : underline;
+}
+
+a[href]:after {
+    content : " (" attr(href) ")";
+}
+
+a[href^="javascript:"],
+a[href^="#"],
+.logo a,
+a[href^="mailto"],
+a[href^="tel"] {
+	&:after {
+		content : "";
+	}
+}
+
+// TEXTURE 				==============================
+
+img {
+    page-break-inside : avoid;
+}
+
+thead {
+    display : table-header-group;
+}
+
+tr {
+    page-break-inside : avoid;
+}
+
+// ELEMENTS 				==============================
+.offCanvasHolder, .toTop, .headerNav, .sideNav, .footerNav {
+    display:none!important;
+}
+.rotator(print);
+.social(print);
+.modal(print);
+
+.header {
+    .logo {
+        a {
+            background:transparent;
+            padding:0;
+        }
+            img {
+                display:block;
+            }
+    }
+}

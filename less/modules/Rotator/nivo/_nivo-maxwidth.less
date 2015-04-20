@@ -1,0 +1,68 @@
+.bullets() when (@rotator-bullets = true) {
+	.nivo-controlNav {
+		padding: @pad 0 0;
+		 bottom: ((@rotator-bullet-size + @pad) * -1);
+		 top:auto;
+	}
+}
+.arrows() when (@rotator-arrows = true) {
+	.nivo-directionNav {
+		a {
+			top:50%;
+            margin: ((@rotator-arrow-size / 2) * -1px) 0 0;
+			.transition(all @trans ease);
+			.opacity(0);
+		}
+	}
+		.nivo-prevNav {
+			left:@pad3;
+		}
+		.nivo-nextNav {
+			right:@pad3;
+		}
+}
+.arrows2() when (@rotator-arrows = true) {
+	.nivo-directionNav {
+		a {
+			.opacity(.8);
+		}
+	}
+	.nivo-prevNav {
+		left:5px;
+	}
+	.nivo-nextNav {
+		right:5px;
+	}
+}
+.arrows-touch() {
+	.nivo-directionNav {
+        a {
+            .opacity(1);
+        }
+    }
+	.nivo-prevNav {
+		left:5px;
+	}
+	.nivo-nextNav {
+		right:5px;
+	}
+}
+
+.nivoSlider-wrapper {
+	padding:0;
+	margin: 0 0 (@rotator-bullet-size + @pad);
+}
+.nivoSlider {
+	overflow:hidden;
+	&:hover {
+		.arrows2();
+	}
+}
+
+	.arrows();
+	
+.bullets();
+
+.touch {
+	.arrows-touch();
+}

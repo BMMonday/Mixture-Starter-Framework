@@ -1,0 +1,161 @@
+//=======Flexslider
+//mixins to add bullet and arrows styles only when set to true
+.bullets() when (@rotator-bullets = true) {
+    .flex-control-nav {
+        width: 100%;
+        position: absolute;
+        //top:((45px - @rotator-bullet-size) / 2);
+        top:.7em;
+        text-align: center;
+        line-height:0;
+        font-size:1em;
+        li {
+            margin: 0 .4em 0 0;
+            display: inline-block;
+            zoom: 1;
+            *display: inline;
+            &:last-child {
+                margin-right:0;
+            }
+        }
+    }
+    .flex-control-paging li a {
+        //width: @rotator-bullet-size;
+        //height: @rotator-bullet-size;
+        width:1em;
+        height:1em;
+        display: block;
+		background:@rotatorBulletColour;
+        cursor: pointer;
+        text-indent: -9999px;
+        .rounded(50%);
+        //.inner-shadow(0, 0, 3px, .3);
+		.transition(background @trans);
+        &:hover, &:focus {
+			background:@rotatorBulletColourHover;
+        }
+        &.flex-active {
+			background: @rotatorBulletColourActive;
+            cursor: default;
+        }
+    }
+}
+
+.arrows() when (@rotator-arrows = true) {
+    .flex-direction-nav {
+        *height: 0;
+        font-size:1em;
+        a {
+            display: block;
+            position: absolute;
+            top:.2em;
+            z-index: 10;
+            cursor: pointer;
+            text-indent: -9999px;
+            //width:40px;
+            //height:40px;
+            transition:all @trans;
+			&:focus {
+				outline:0;
+			}
+        }
+        a, a:visited {
+            color:@dark;
+        }
+        i {
+            position:absolute;
+            top:0;
+            //.font-size(@rotator-arrow-size);
+            font-size:2em;
+            text-indent:0;
+        }
+        .flex-next {
+            right:@padding;
+            i {
+                right:0;
+            }
+        }
+        .flex-prev {
+            left:@padding;
+            i {
+                left:0;
+            }
+        }
+        .flex-disabled {
+            .opacity(.3);
+            cursor: default;
+        }
+    }
+}
+.arrows2() when (@rotator-arrows = true) {
+    .flex-next:hover, .flex-prev:hover {
+        color:@basecolor;
+        text-decoration:none;
+    }
+	.flex-disabled:hover {
+		color:@dark;
+	}
+}
+
+.carousel() when (@carousel = true) {
+	.carousel li {
+		margin-right: 5px;
+	}
+}
+
+.slides,
+.flex-control-nav,
+.flex-direction-nav {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+} 
+
+.flexslider {
+    background: @white;
+    position: relative;
+    zoom: 1;
+    padding: 2.4em 0 0;
+    z-index:1;
+    .slides {
+        zoom: 1;
+        //.clearfix();
+        > li {
+            display: none;
+            -webkit-backface-visibility: hidden;
+            position:relative;
+        }
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+    &:hover {
+        .arrows2();
+    }
+}
+.flex-pauseplay span {
+    text-transform: capitalize;
+}
+//No javascript fallback
+.no-js .slides > li:first-child {display: block;}
+.flex-viewport {
+    max-height: 2000px;
+    .transition(all 1s ease);
+    background:@black;
+}
+.loading .flex-viewport {
+    max-height: 300px;
+}
+
+//.carousel li {
+//    margin-right: 5px
+//}
+
+// Direction Nav
+.arrows();
+
+// Control Nav
+.bullets();
+
+.carousel();

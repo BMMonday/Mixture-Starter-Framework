@@ -1,0 +1,103 @@
+{% block title %}Button Examples{% endblock %}
+
+{% block precontent %}
+
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Button Examples{% endblock %}
+{% block content %}
+	<div id="buttonExamples">
+		<h2>Button Examples</h2>
+		<h4 style="margin-bottom:0;">Normal button (simple a tag)</h4>
+		<p>
+			<a href="#" class="btn icon-left adjustFont"><i class="im icn-grid" aria-hidden="true"></i>Left Icon</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#" class="btn icon-right adjustFont">Right Icon<i class="im icn-grid" aria-hidden="true"></i></a>
+		</p>
+
+		<h4 style="margin-bottom:0;">btn-wrap (for when the icon cannot be placed within the button [e.g. input type="submit"])</h4>
+		<p>
+			<span class="btn-wrap btn icon-left adjustFont">
+				<i class="im icn-grid" aria-hidden="true"></i>
+				<input type="submit" value="Left Icon" class="productvariantaddtocartbutton btn">
+			</span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="btn-wrap btn icon-right adjustFont">
+				<i class="im icn-grid" aria-hidden="true"></i>
+				<input type="submit" value="Right Icon" class="productvariantaddtocartbutton btn">
+			</span>
+		</p>
+
+
+        <h2>Buttons' size will adjust with font size</h2>
+        <input id="fontSize" type="range" min="12" max="30" step="1" value="12"/>
+        <label id="fontSizeLabel" for="fontSize">12px</label>
+
+        <p>&nbsp;</p>
+        <p>Buttons can have different colours.</p>
+        <p><input type="submit" value="btn-green" class="btn btn-green adjustFont"></p>
+        <p><input type="submit" value="btn-red" class="btn btn-red adjustFont"></p>
+
+        <p>&nbsp;</p>
+        <p>Buttons can have fixed widths (activated with '@btns-fixed' option in _variables.less)</p>
+        <p>btn-small</p>
+        <p>
+            <a href="#" class="btn btn-small adjustFont">This is a plain 'a' button</a> &nbsp;&nbsp;
+            <a href="#" class="btn btn-small icon-left adjustFont"><i class="im icn-grid" aria-hidden="true"></i>This is a plain 'a' button</a> &nbsp;&nbsp;
+        </p>
+        <p>
+            <input type="submit" value="This is an input btn" class="btn btn-small adjustFont"> &nbsp;&nbsp;
+            <span class="btn-wrap btn btn-small icon-left adjustFont">
+                <i class="im icn-grid" aria-hidden="true"></i>
+                <input type="submit" value="This is an input btn" class="btn">
+            </span>
+        </p>
+        <p>btn-mid</p>
+        <p>
+            <a href="#" class="btn btn-mid adjustFont">This is a plain 'a' button</a> &nbsp;&nbsp;
+            <a href="#" class="btn btn-mid icon-left adjustFont"><i class="im icn-grid" aria-hidden="true"></i>This is a plain 'a' button</a> &nbsp;&nbsp;
+        </p>
+        <p>
+            <input type="submit" value="This is an input btn" class="btn btn-mid adjustFont"> &nbsp;&nbsp;
+            <span class="btn-wrap btn btn-mid icon-left adjustFont">
+                <i class="im icn-grid" aria-hidden="true"></i>
+                <input type="submit" value="This is an input btn" class="btn">
+            </span>
+        </p>
+        <p>btn-wide</p>
+        <p>
+            <a href="#" class="btn btn-wide adjustFont">This is a plain 'a' button</a> &nbsp;&nbsp;
+            <a href="#" class="btn btn-wide icon-left adjustFont"><i class="im icn-grid" aria-hidden="true"></i>This is a plain 'a' button</a> &nbsp;&nbsp;
+        </p>
+        <p>
+            <input type="submit" value="This is an input btn" class="btn btn-wide adjustFont"> &nbsp;&nbsp;
+            <span class="btn-wrap btn btn-wide icon-left adjustFont">
+                <i class="im icn-grid" aria-hidden="true"></i>
+                <input type="submit" value="This is an input button" class="btn">
+            </span>
+        </p>
+    </div>
+
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+    {% include "sidebar" %}
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#fontSize').change(function() {
+				var newVal = $(this).val() + "px";
+				$('#fontSizeLabel').text(newVal);
+				$('#buttonExamples').find('.adjustFont').css('font-size', newVal);
+			})
+		})
+	</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% block title %}Maplace.js - Google Map Plugin{% endblock %}
+
+{% block precontent %}
+    
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Maplace.js - Google Map Plugin{% endblock %}
+{% block content %}
+	<h2>See full options at <a href="http://maplacejs.com/" target="_blank">http://maplacejs.com</a></h2>
+    {% if global.map %}
+        <!-- Include rotator -->
+        {% include "map" %}
+	{% else %}
+		<p>Map plugin disabled in '/models/_global.json'</p>
+    {% endif %}
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+	{% include "sidebar" %}
+{% endblock %}

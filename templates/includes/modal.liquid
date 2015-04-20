@@ -1,0 +1,106 @@
+{% case global.modal-type %}
+{% when 'nivo' %}
+    <a class="modal-init" title="Caption for image 1" href="/images/980x300-ccc.jpg" data-lightbox-gallery="gallery1">{{ "250x62" | placeholder:'ccc' | image_tag:'Placeholder' }}</a>
+    <a class="modal-init" title="Lorem Ipsum" href="/images/980x300-acacac.jpg" data-lightbox-gallery="gallery1">{{ "250x62" | placeholder:'acacac' | image_tag:'Placeholder' }}</a>
+    <a class="modal-init" title="Dolor sit amet" href="/images/980x300-898989.jpg" data-lightbox-gallery="gallery1">{{ "250x62" | placeholder:'898989' | image_tag:'Placeholder' }}</a>
+{% when 'swipebox' %}
+    <a class="modal-init" title="Caption for image 1" href="/images/980x300-ccc.jpg">{{ "250x62" | placeholder:'ccc' | image_tag:'Placeholder' }}</a>
+    <a class="modal-init" title="Lorem Ipsum" href="/images/980x300-acacac.jpg">{{ "250x62" | placeholder:'acacac' | image_tag:'Placeholder' }}</a>
+    <a class="modal-init" title="Dolor sit amet" href="/images/980x300-898989.jpg">{{ "250x62" | placeholder:'898989' | image_tag:'Placeholder' }}</a>
+{% when 'featherlight' %}
+	<p><a class="trigger" data-featherlight="#lightbox-text" href="#">Basic Text</a></p>
+	<div id="lightbox-text" class="lightbox">
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+		<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+	</div>
+{% when 'popeasy' %}
+    <a class="modalLink" href="#">Click Me</a>
+    <div class="overlay"></div>
+    <div class="modal">
+        <a href="#" class="closeBtn"><i class="im icn-close"></i></a>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+    </div>
+{% endcase %}
+
+{% if global.modal2 %}
+    {% case global.modal2-type %}
+    {% when 'nivo' %}
+        <a class="modal-init" title="Caption for image 1" href="/images/980x300-ccc.jpg" data-lightbox-gallery="gallery1">{{ "250x62" | placeholder:'ccc' | image_tag:'Placeholder' }}</a>
+        <a class="modal-init" title="Lorem Ipsum" href="/images/980x300-acacac.jpg" data-lightbox-gallery="gallery1">{{ "250x62" | placeholder:'acacac' | image_tag:'Placeholder' }}</a>
+        <a class="modal-init" title="Dolor sit amet" href="/images/980x300-898989.jpg" data-lightbox-gallery="gallery1">{{ "250x62" | placeholder:'898989' | image_tag:'Placeholder' }}</a>
+    {% when 'swipebox' %}
+        <a class="modal-init" title="Caption for image 1" href="/images/980x300-ccc.jpg">{{ "250x62" | placeholder:'ccc' | image_tag:'Placeholder' }}</a>
+        <a class="modal-init" title="Lorem Ipsum" href="/images/980x300-acacac.jpg">{{ "250x62" | placeholder:'acacac' | image_tag:'Placeholder' }}</a>
+        <a class="modal-init" title="Dolor sit amet" href="/images/980x300-898989.jpg">{{ "250x62" | placeholder:'898989' | image_tag:'Placeholder' }}</a>
+    {% when 'featherlight' %}
+        <p><a class="trigger" data-featherlight="#lightbox-text" href="#">Featherlight Basic Text</a></p>
+        <div id="lightbox-text" class="lightbox">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+        </div>
+    {% when 'popeasy' %}
+        <a class="modalLink" href="#">Click Me</a>
+        <div class="overlay"></div>
+        <div class="modal">
+            <a href="#" class="closeBtn"><i class="im icn-close"></i></a>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+        </div>
+    {% endcase %}
+{% endif %}
+
+
+{% case global.modal-type %}
+{% when 'nivo' %}
+	{{ "nivo-lightbox.min.js" | asset_url | script_tag }}
+{% when 'swipebox' %}
+	{{ "jquery.swipebox.min.js" | asset_url | script_tag }}
+{% when 'featherlight' %}
+	{{ "featherlight.min.js" | asset_url | script_tag }}
+{% when 'popeasy' %}
+    {{ "jquery.popeasy.js" | asset_url | script_tag }}
+{% endcase %}
+
+{% case global.modal2-type %}
+{% when 'nivo' %}
+    {{ "nivo-lightbox.min.js" | asset_url | script_tag }}
+{% when 'swipebox' %}
+    {{ "jquery.swipebox.min.js" | asset_url | script_tag }}
+{% when 'featherlight' %}
+    {{ "featherlight.min.js" | asset_url | script_tag }}
+{% when 'popeasy' %}
+    {{ "jquery.popeasy.js" | asset_url | script_tag }}
+{% endcase %}
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		{% case global.modal-type %}
+		{% when 'nivo' %}
+			 $('.modal-init').nivoLightbox({
+				effect: '{{ global.nivo-modal-anim }}' //Set in model/_global.json: 'fade', 'fadeScale', 'slideLeft', 'slideRight', 'slideUp', 'slideDown', 'fall'.
+			});
+		{% when 'swipebox' %}
+			$('.modal-init').swipebox({
+				hideBarsDelay : 0
+			});
+		{% when 'featherlight' %}
+
+        {% when 'popeasy' %}
+            $('.modalLink').modal();
+		{% endcase %}
+
+        {% case global.modal2-type %}
+        {% when 'nivo' %}
+             $('.modal-init').nivoLightbox({
+                effect: '{{ global.nivo-modal-anim }}' //Set in model/_global.json: 'fade', 'fadeScale', 'slideLeft', 'slideRight', 'slideUp', 'slideDown', 'fall'.
+            });
+        {% when 'swipebox' %}
+            $('.modal-init').swipebox({
+                hideBarsDelay : 0
+            });
+        {% when 'featherlight' %}
+
+        {% when 'popeasy' %}
+            $('.modalLink').modal();
+        {% endcase %}
+	});
+</script>

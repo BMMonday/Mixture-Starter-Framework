@@ -1,0 +1,542 @@
+//===================== Module Imports
+// Import the styles for each module to the necessary breakpoint less files if the variable is true
+//==Cookie Bar
+.cookies(base) when (@cookie-bar) {
+    @import "modules/cookiebar/_cookiebar-base.less";
+}
+
+//== Rotator Module
+//Common styles
+.rotator(base) when (@rotator) {
+    @import "modules/rotator/_rotator-base.less";
+}
+.rotator(maxwidth) when (@rotator) {
+    @import "modules/rotator/_rotator-maxwidth.less";
+}
+//Glide.js (http://jedrzejchalubek.com/glide)
+.rotator(base) when (@rotator) and (@rotator-type = "glidejs") {
+    @import "modules/rotator/glidejs/_glidejs-base.less";
+}
+.rotator(maxwidth) when (@rotator) and (@rotator-type = "glidejs") {
+    @import "modules/rotator/glidejs/_glidejs-maxwidth.less";
+}
+//Flexslider (http://www.woothemes.com/flexslider)
+.rotator(base) when (@rotator) and (@rotator-type = "flexslider") {
+    @import "modules/rotator/flexslider/_flex-base.less";
+}
+.rotator(maxwidth) when (@rotator) and (@rotator-type = "flexslider") {
+    @import "modules/rotator/flexslider/_flex-maxwidth.less";
+}
+//Nivo Slider (http://dev7studios.com/plugins/nivo-slider)
+.rotator(base) when (@rotator) and (@rotator-type = "nivo") {
+    @import "modules/rotator/nivo/_nivo-base.less";
+}
+.rotator(maxwidth) when (@rotator) and (@rotator-type = "nivo") {
+    @import "modules/rotator/nivo/_nivo-maxwidth.less";
+}
+
+//==Contact form module
+.forms(base) when (@forms) {
+    @import "modules/forms/_forms-base.less";
+}
+.forms(bp3) when (@forms) {
+    @import "modules/forms/_forms-bp3.less";
+}
+.forms(maxwidth) when (@forms) {
+    @import "modules/forms/_forms-maxwidth.less";
+}
+
+//==Social links module
+.social(base) when (@social-links) {
+    @import "modules/sociallinks/_sociallinks-base.less";
+}
+.social(bp2) when (@social-links) {
+    @import "modules/sociallinks/_sociallinks-bp2.less";
+}
+
+//==Modal window module
+//Nivo Lightbox (http://dev7studios.com/nivo-lightbox/#/documentation)
+.importNivo-base() {
+    @import "modules/modal/nivo/_modal-nivo-base.less";
+}
+.importNivo-bp2() {
+    @import "modules/modal/nivo/_modal-nivo-bp2.less";
+}
+.modal(base) when (@modal) and (@modal-type = "nivo") {
+    .importNivo-base();
+}
+.modal(bp2) when (@modal) and (@modal-type = "nivo") {
+    .importNivo-bp2();
+}
+//Swipebox (http://brutaldesign.github.io/swipebox)
+.importSwipebox-base() {
+    @import "modules/modal/swipebox/_modal-swipebox-base.less";
+}
+.modal(base) when (@modal) and (@modal-type = "swipebox") {
+    .importSwipebox-base();
+}
+//Featherlight (http://noelboss.github.io/featherlight/)
+.importFeatherlight-base() {
+    @import "modules/modal/featherlight/_modal-featherlight-base.less";
+}
+.modal(base) when (@modal) and (@modal-type = "featherlight") {
+    .importFeatherlight-base();
+}
+//Popeasy (http://thomasgrauer.com/popeasy/)
+.importPopeasy-base() {
+    @import "modules/modal/popeasy/_modal-popeasy-base.less";
+}
+.importPopeasy-bp2() {
+    @import "modules/modal/popeasy/_modal-popeasy-maxwidth.less";
+}
+.modal(base) when (@modal) and (@modal-type = "popeasy") {
+    .importPopeasy-base();
+}
+.modal(bp2) when (@modal) and (@modal-type = "popeasy") {
+    .importPopeasy-bp2();
+}
+
+//--Second modal type
+//Nivo Lightbox (http://dev7studios.com/nivo-lightbox/#/documentation)
+.secondmodal(base) {
+    .importNivo-base();
+}
+.secondmodal(bp2) {
+    .importNivo-bp2();
+}
+//Swipebox (http://brutaldesign.github.io/swipebox)
+.secondmodal(base) when (@secondmodal) and (@secondmodal-type = "swipebox") {
+    .importSwipebox-base();
+}
+//Featherlight (http://noelboss.github.io/featherlight/)
+.secondmodal(base) when (@secondmodal) and (@secondmodal-type = "featherlight") {
+    .importFeatherlight-base();
+}
+//Popeasy (http://thomasgrauer.com/popeasy/)
+.secondmodal(base) when (@secondmodal) and (@secondmodal-type = "popeasy") {
+    .importPopeasy-base();
+}
+.secondmodal(bp2) when (@secondmodal) and (@secondmodal-type = "popeasy") {
+    .importPopeasy-bp2();
+}
+
+//==Google Map
+.map(base) when (@map) {
+	@import "modules/map/_map-base.less";
+}
+
+//===================== Layout Options
+//==Offcanvas Menu Transitions
+//-slideOnTop
+.menuClosed(content) when (@menuTransition = "slideOnTop") {
+
+}
+	.menuOpen(content-left) when (@menuTransition = "slideOnTop") {
+
+	}
+	.menuOpen(content-right) when (@menuTransition = "slideOnTop") {
+
+	}
+.menuClosed(offCanvasHolder) when (@menuTransition = "slideOnTop") {
+
+}
+	.menuOpen(offCanvasHolder) when (@menuTransition = "slideOnTop") {
+
+	}
+.menuClosed(offCanvas-left) when (@menuTransition = "slideOnTop") {
+	left:@negMenuWidth;
+}
+.menuClosed(offCanvas-right) when (@menuTransition = "slideOnTop") {
+	right:@negMenuWidth;
+}
+    .menuOpen(offCanvas-left) when (@menuTransition = "slideOnTop") {
+        .translate3d(100%, 0, 0);
+    }
+    .menuOpen(offCanvas-right) when (@menuTransition = "slideOnTop") {
+        .translate3d(-100%, 0, 0);
+    }
+    .menuOpen(offCanvas-left-original) when (@menuTransition = "slideOnTop") {
+        .translate3d(100%, 0, 0);
+        z-index:1000;
+    }
+    .menuOpen(offCanvas-right-original) when (@menuTransition = "slideOnTop") {
+        .translate3d(-100%, 0, 0);
+        z-index:1000;
+    }
+.subClosed(offCanvas) when (@menuTransition = "slideOnTop") {
+	overflow:hidden;
+    z-index:1000;
+}
+
+//-Push
+.menuClosed(content) when (@menuTransition = "push") {
+
+}
+	.menuOpen(content-left) when (@menuTransition = "push") {
+		.translate3d(@menuWidth, 0, 0);
+	}
+	.menuOpen(content-right) when (@menuTransition = "push") {
+		.translate3d(@negMenuWidth, 0, 0);
+	}
+.menuClosed(offCanvasHolder) when (@menuTransition = "push") {
+
+}
+	.menuOpen(offCanvasHolder) when (@menuTransition = "push") {
+
+	}
+.menuClosed(offCanvas-left) when (@menuTransition = "push") {
+	left:@negMenuWidth;
+}
+.menuClosed(offCanvas-right) when (@menuTransition = "push") {
+	right:@negMenuWidth;
+}
+    .menuOpen(offCanvas-left) when (@menuTransition = "push") {
+        .translate3d(100%, 0, 0);
+    }
+    .menuOpen(offCanvas-right) when (@menuTransition = "push") {
+        .translate3d(-100%, 0, 0);
+    }
+
+//-reveal
+.menuClosed(content) when (@menuTransition = "reveal") {
+
+}
+	.menuOpen(content-left) when (@menuTransition = "reveal") {
+		.translate3d(@menuWidth, 0, 0);
+	}
+	.menuOpen(content-right) when (@menuTransition = "reveal") {
+		.translate3d(@negMenuWidth, 0, 0);
+	}
+.menuClosed(offCanvasHolder) when (@menuTransition = "reveal") {
+
+}
+	.menuOpen(offCanvasHolder) when (@menuTransition = "reveal") {
+
+	}
+.menuClosed(offCanvas-left) when (@menuTransition = "reveal") {
+	visibility:hidden;
+	.transition(visibility 0s @trans);
+}
+.menuClosed(offCanvas-right) when (@menuTransition = "reveal") {
+	right:0;
+	visibility:hidden;
+	.transition(visibility 0s @trans);
+}
+	.menuOpen(offCanvas-left) when (@menuTransition = "reveal") {
+		visibility:visible;
+		.transition(visibility 0s);
+	}
+	.menuOpen(offCanvas-right) when (@menuTransition = "reveal") {
+		visibility:visible;
+		.transition(visibility 0s);
+	}
+
+//-push-reveal
+.menuClosed(content) when (@menuTransition = "push-reveal") {
+
+}
+	.menuOpen(content-left) when (@menuTransition = "push-reveal") {
+		.translate3d(@menuWidth, 0, 0);
+	}
+	.menuOpen(content-right) when (@menuTransition = "push-reveal") {
+		.translate3d(@negMenuWidth, 0, 0);
+	}
+.menuClosed(offCanvasHolder) when (@menuTransition = "push-reveal") {
+
+}
+	.menuOpen(offCanvasHolder) when (@menuTransition = "push-reveal") {
+
+	}
+.menuClosed(offCanvas-left) when (@menuTransition = "push-reveal") {
+	left:(@negMenuWidth / 2);
+	visibility:hidden;
+	transition: transform @trans ease-in-out, visibility 0s @trans;
+}
+.menuClosed(offCanvas-right) when (@menuTransition = "push-reveal") {
+	right:(@negMenuWidth / 2);
+	visibility:hidden;
+	transition: transform @trans ease-in-out, visibility 0s @trans;
+}
+	.menuOpen(offCanvas-left) when (@menuTransition = "push-reveal") {
+		visibility:visible;
+		.translate3d(50%, 0, 0);
+		transition: transform @trans ease-in-out, visibility 0s;
+	}
+	.menuOpen(offCanvas-right) when (@menuTransition = "push-reveal") {
+		visibility:visible;
+		.translate3d(-50%, 0, 0);
+		transition: transform @trans ease-in-out, visibility 0s;
+	}
+
+//==Center Menu Transition
+//-slideOnTop
+.centerMenuClosed(offCanvas-center) when (@centerMenuTransition = "slideOnTop") {
+    position:absolute;
+	bottom:100%;
+    left:0;
+	.transition(transform @trans);
+    width:100%;
+    z-index:1000;
+}
+	.centerMenuOpen(offCanvas-center) when (@centerMenuTransition = "slideOnTop") {
+		.translate3d(0,100%,0);
+	}
+
+//==Sub-level transition
+//-slideOnTop
+.subClosed(ulul) when (@subLevelTransition = "slideOnTop") {
+	opacity:0;
+	transition:transform @trans, opacity 0s @trans;
+}
+	.subActive(ulul) when (@subLevelTransition = "slideOnTop") {
+		.translate3d(0,0,0);
+		opacity:1;
+		transition:transform @trans, opacity 0s;
+	}
+
+//-push
+.subClosed(offCanvas) when (@subLevelTransition = "push") {
+	.firstLevel {
+		.transition(transform @trans);
+	}
+}
+	.subActive(offCanvas) when (@subLevelTransition = "push") {
+		&.active1 {
+			.offCanvasMenu .firstLevel {
+				.translate3d(0,0,0);
+			}
+		}
+		&.active2  {
+			.offCanvasMenu  .firstLevel {
+				.translate3d(-100%,0,0);
+			}
+		}
+		&.active3 {
+			.offCanvasMenu  .firstLevel {
+				.translate3d(-200%,0,0);
+			}
+		}
+		&.active4 {
+			.offCanvasMenu  .firstLevel {
+				.translate3d(-300%,0,0);
+			}
+		}
+
+		.offCanvasMenu {
+
+		}
+	}
+.subClosed(ulul) when (@subLevelTransition = "push") {
+	opacity:0;
+	.transition(opacity 0s @trans);
+}
+	.subActive(ulul) when (@subLevelTransition = "push") {
+		opacity:1;
+		z-index:9;
+		.transition(opacity 0s);
+	}
+
+
+//==Menu Icons
+.menuIcons(base) when (@menuIcons) {
+	.hasIcon > a {
+		.left {
+			display:block;
+			position:absolute;
+			text-align:center;
+
+            font-size:1.4em;
+            width:1em;
+            height:1em;
+            line-height:1;
+            top:50%;
+            margin-top:-.5em;
+			i {
+				//font-size:1.4em;
+				//width:1em;
+			}
+		}
+		.middle {
+			padding-left:1.8em;
+			display:inline-block;
+		}
+	}
+}
+.menuIcons(maxwidth) when (@menuIcons) {
+	.hasIcon {
+		> a {
+			//padding-left:0;
+			.left when (@menuIconsDesktop = false) {
+				//left:.43em;
+                display:none;
+			}
+            .middle when (@menuIconsDesktop = false) {
+                //padding-left:2.3em;
+                padding-left:0;
+            }
+		}
+	}
+	//.level2 .hasIcon {
+	//	i {
+	//		.transition(color @trans-menu);
+	//	}
+	//}
+}
+.menuIcons(maxwidth-touch) when (@menuIcons) and (@menuIconsDesktop) {
+    li+li.hasIcon {
+        > a {
+            .left {
+                //left:(.6em + .6em);
+            }
+        }
+    }
+}
+.menuIcons(hide) when (@menuIcons) {
+	.hasIcon > a {
+		.left {
+			display:none;
+		}
+		.middle {
+			padding-left:0;
+		}
+	}
+}
+
+//==Stack Icons
+.stackIcons() when (@stackIcons) {
+	.im-stack {
+		position: relative;
+		display: inline-block;
+		width: 2em;
+		height: 2em;
+		line-height: 2em;
+		vertical-align: middle;
+	}
+	.im-stack-1x,
+	.im-stack-2x {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		text-align: center;
+	}
+	.im-stack-1x {
+		line-height: inherit;
+	}
+	.im-stack-2x {
+		font-size: 2em;
+	}
+}
+
+//==Position of Scroll to Top button
+.toTopBorder(tr) when (@toTopInset > 0) and (@toTopbr > 0) {
+	.border-radius(@toTopbr; 0; 0; @toTopbr);//TL; TR; BR; BL
+	border-right:0;
+}
+	.toTopBorder(tr) when (@toTopInset = 0) and (@toTopbr > 0) {
+		.border-radius(0; 0; 0; @toTopbr);
+		border-right:0;
+		border-top:0;
+	}
+.toTopBorder(br) when (@toTopInset > 0) and (@toTopbr > 0) {
+	.border-radius(@toTopbr; 0; 0; @toTopbr);
+	border-right:0;
+}
+	.toTopBorder(br) when (@toTopInset = 0) and (@toTopbr > 0) {
+		.border-radius(@toTopbr; 0; 0; 0);
+		border-bottom:0;
+		border-right:0;
+	}
+.toTopBorder(tl) when (@toTopInset > 0) and (@toTopbr > 0) {
+	.border-radius(0;@toTopbr;@toTopbr;0);
+	border-left:0;
+}
+	.toTopBorder(tl) when (@toTopInset = 0) and (@toTopbr > 0) {
+		.border-radius(0; 0; @toTopbr; 0);
+		border-top:0;
+		border-left:0;
+	}
+.toTopBorder(bl) when (@toTopInset > 0) and (@toTopbr > 0) {
+	.border-radius(0;@toTopbr;@toTopbr;0);
+	border-left:0;
+}
+	.toTopBorder(bl) when (@toTopInset = 0) and (@toTopbr > 0) {
+		.border-radius(0; @toTopbr; 0; 0);
+		border-bottom:0;
+		border-left:0;
+	}
+
+.toTopPos() when (@toTop-pos = "tr") {
+	top:@navBarHeight * -1;//Kept off screen until displayed to prevent interference with other elements when transparent
+	right:0;
+    .toTopBorder(tr);
+	transition:opacity .8s, top 0s .8s;//Fade out transition, move back off screen after .8s delay
+}
+    .toTopPos-visible() when (@toTop-pos = "tr") {
+        top:(@toTopInset * 1px);
+        transition:background @trans, opacity .8s, top 0s;//Fade in transition
+    }
+.toTopPos() when (@toTop-pos = "br") {
+	bottom:@navBarHeight * -1;
+	right:0;
+    .toTopBorder(br);
+	transition:opacity .8s, bottom 0s .8s;//Fade out transition, move back off screen after .8s delay
+}
+    .toTopPos-visible() when (@toTop-pos = "br") {
+        bottom:(@toTopInset * 1px);
+        transition:background @trans, opacity .8s, bottom 0s;//Fade in transition
+    }
+.toTopPos() when (@toTop-pos = "tl") {
+	top:@navBarHeight * -1;//Kept off screen until displayed to prevent interference with other elements when transparent
+    left:0;
+	.toTopBorder(tl);//TL; TR; BR; BL
+	transition:opacity .8s, top 0s .8s;//Fade out transition, move back off screen after .8s delay
+}
+    .toTopPos-visible() when (@toTop-pos = "tl") {
+        top:(@toTopInset * 1px);
+        transition:background @trans, opacity .8s, top 0s;//Fade in transition
+    }
+.toTopPos() when (@toTop-pos = "bl") {
+	bottom:@navBarHeight * -1;
+	left:0;
+    .toTopBorder(bl);
+	transition:opacity .8s, bottom 0s .8s;//Fade out transition, move back off screen after .8s delay
+}
+    .toTopPos-visible() when (@toTop-pos = "bl") {
+        bottom:(@toTopInset * 1px);
+        transition:background @trans, opacity .8s, bottom 0s;//Fade in transition
+    }
+
+//==Sticky Footer
+.fixedFooter(htmlbody) when (@footer-style = "sticky") {
+    .js, .js body {
+		height:100%;
+	}
+}
+.fixedFooter(mainForm) when (@footer-style = "sticky") {
+    min-height:100%;
+    background:@white;
+}
+.fixedFooter(footer) when (@footer-style = "sticky") {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+//==Slideout Footer
+.fixedFooter(htmlbody) when (@footer-style = "slideout") {
+    .js, .js body {
+        height:100%;
+    }
+}
+.fixedFooter(mainForm) when (@footer-style = "slideout") {
+    min-height:100%;
+    background:@white;
+}
+.fixedFooter(wrapper) when (@footer-style = "slideout") {
+    position:relative;
+    z-index:2;
+}
+.fixedFooter(footer) when (@footer-style = "slideout") {
+    position:fixed;
+    bottom:0;
+    z-index:1;
+}

@@ -1,0 +1,58 @@
+@import "_variables.less";
+@import "_mixins.less";
+@import "_font-custom-ie7.less";
+
+.header {
+    position:relative;
+    z-index:9;
+}
+.content {
+    position:relative;
+    z-index:1;
+}
+
+.toTop {
+    i {
+        line-height:@navBarHeight;
+    }
+}
+.headerNav {
+    ul {
+        zoom:1;
+        ul {
+            background-image:url(images/transp.gif);
+            background-repeat:repeat;
+        }
+    }
+    .level1 {
+        > .hasChildren {
+            > a {
+                .right {
+                    i {
+                        .icon-arrow-down-ie7(@arrow);
+                    }
+                }
+            }
+        }
+    }
+    .level2 {
+        .showChildren {
+            display:inline;
+            float:none;
+        }
+    }
+    .rightAligned .level2 .showChildren i {
+        .icon-arrow-left-ie7(@arrow);
+    }
+}
+
+//.column {
+//    width:@oneCol - (@pad2 * 2) - 2px;
+//}
+
+.footerNav {
+    li {
+        float:left;
+        width:120px;
+    }
+}

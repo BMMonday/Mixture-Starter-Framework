@@ -1,0 +1,95 @@
+/**
+ * Featherlight – ultra slim jQuery lightbox
+ * Version 0.3.1 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2014, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+
+.wrapper .lightbox {
+	display:none;
+}
+
+.featherlight {
+	display: none;
+	position:fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	height: 100%;
+	text-align: center;
+	cursor: pointer;
+	background: #333;
+	background: rgba(0, 0, 0, 0.8);
+	&:before {
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		margin-right: -0.25em;
+	}
+	.featherlight iframe {
+		border: none;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 100%;
+		width: 100%;
+	}
+}
+	
+	.featherlight-content {
+		text-align: left;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		//width: 60%;
+		max-width:60%;
+		max-height: 95%;
+		overflow: auto;
+		cursor: auto;
+		background:@darkgrey;
+	}
+		.featherlight-inner {
+			display: block;
+			padding:2em .4em .4em;//@padding;
+			color:@white;
+			background:@dark;
+		}
+
+.featherlight-iframe .featherlight-content {
+	min-height: 60%;
+}	
+
+.featherlight-image {
+	width: 100%;
+	max-height: 85vh;
+}
+
+.featherlight-close {
+	position: absolute;
+	z-index: 9999;
+	right: @pad2;
+	top: @pad2;
+	.font-size(12);
+	line-height: 1.6em;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	color:@white;
+	padding:0 1.2em 0 0;
+	&:after {
+		content:"X";
+		font-size:1.2em;
+		font-weight:400;
+		position:absolute;
+		right:0;
+	}
+	&:hover {
+		color:@light;
+	}
+}

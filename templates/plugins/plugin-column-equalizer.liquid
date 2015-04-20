@@ -1,0 +1,95 @@
+{% block title %}Multi-Column Equalizer{% endblock %}
+
+{% block precontent %}
+    
+{% endblock %}
+
+{% block sectionclass %}withSidebar {% endblock %}
+{% block pagetitle %}Multi-Column Equalizer{% endblock %}
+{% block content %}
+	<h2>Equalizer <a href="https://github.com/CSS-Tricks/Equalizer" target="_blank">https://github.com/CSS-Tricks/Equalizer</a></h2>
+	<!-- Include modal -->
+	{% include "equalizer" %}
+	
+	<h2>3 Column Item List Demo</h2>
+	<h3 style="margin-bottom:0">Items in the last row will widen to fill the space</h3>
+	<div class="clearfix equalize autoWidthOrphans" style="padding:2%;border:1px solid;margin:0 0 20px;">
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+	</div>
+	
+	<div class="clearfix equalize autoWidthOrphans" style="padding:2%;border:1px solid;margin:0 0 20px;">
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+	</div>
+    <hr>
+    <h3 style="margin-bottom:0">Items in the last row will be centered</h3>
+	<div class="clearfix equalize centerOrphans" style="padding:2%;border:1px solid;margin:0 0 20px;">
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+	</div>
+	
+	<div class="clearfix equalize centerOrphans" style="padding:2%;border:1px solid;margin:0 0 20px;">
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+		
+		<div class="columnBlock">
+			{{ 1 | lorem_ipsum:'p' }}
+		</div>
+	</div>
+{% endblock %}
+
+{% block contentfooter %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Include sidebar -->
+	{% include "sidebar" %}
+{% endblock %}
